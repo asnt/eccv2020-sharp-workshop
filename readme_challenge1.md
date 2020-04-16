@@ -71,12 +71,12 @@ The body scans are textured 3D meshes stored in a numpy npz archive.
 
 Load and access arrays from an npz file in Python with
 
-```
+```python
   import numpy as np
   mesh = np.load("name.npz", allow_pickle=True)
   mesh["vertices"]
   mesh["faces"]
-  ...
+  # ...
 ```
 
 The following fields define a mesh:
