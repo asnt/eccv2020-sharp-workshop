@@ -1,7 +1,5 @@
 # SHARP: SHApe Recovery from Partial textured 3D scans
 
-## Challenge 1: Recovery of Human Body Scans
-
 The goal is to recover a reference scan `Y` from a partial version of it `X`.
 The data consists in pairs `(X, Y)` of partial and reference scans.
 
@@ -11,6 +9,9 @@ The partial views `X` are to be generated synthetically with the
 These routines will be used to generate the data for the final evaluation.
 Custom ways to generate partial views may be used for augmenting the training
 provided they are reported.
+
+
+## Challenge 1: Recovery of Human Body Scans
 
 In both tracks, the data is split into train/test/eval sets. The train/test
 sets are provided. The eval set is kept secret for the final evaluation.
