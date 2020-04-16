@@ -1,5 +1,15 @@
 # SHARP Challenge 1: Recovery of Human Body Scans
 
+The goal is to recover a reference scan `Y` from a partial version of it `X`.
+The data consists in pairs `(X, Y)` of partial and reference scans.
+
+Only the reference data `Y` is provided.
+The partial views `X` are to be generated synthetically with the
+[suggested routines](preprocess.py).
+These routines will be used to generate the data for the final evaluation.
+Custom ways to generate partial views may be used for augmenting the training
+provided they are reported.
+
 In both tracks, the data is split into train/test/eval sets. The train/test
 sets are provided. The eval set is kept secret for the final evaluation.
 
@@ -21,6 +31,11 @@ The data files are:
 
 * `*.npz`: The raw scan as a textured mesh. Stored as a numpy npz archive.
 * `landmarks3d.txt`: 3D body landmark positions in text format.
+
+During the final evaluation:
+
+* the reference mesh `Y` is the raw scan,
+* the partial views `X` are generated directly from `Y`.
 
 See below for details on the file formats.
 
@@ -49,6 +64,11 @@ The data files are:
   detailed and contains artefacts similar to a real 3D scan.
 * `landmarks3d.txt`:
   The 3D positions of the 3D landmarks. Common to both meshes.
+
+During the final evaluation:
+
+* the reference mesh `Y` is `fitted_textured.npz`,
+* the partial views `X` are generated from `fusion_textured.npz`.
 
 Both meshes are aligned and in the same frame of reference.
 
