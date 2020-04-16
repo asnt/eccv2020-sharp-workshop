@@ -65,12 +65,12 @@ The data files are:
 * `landmarks3d.txt`:
   The 3D positions of the 3D landmarks. Common to both meshes.
 
+Both meshes are aligned and in the same frame of reference.
+
 During the final evaluation:
 
 * the reference mesh `Y` is `fitted_textured.npz`,
 * the partial views `X` are generated from `fusion_textured.npz`.
-
-Both meshes are aligned and in the same frame of reference.
 
 See below for details on the file formats.
 
