@@ -1,4 +1,6 @@
-# SHARP Challenge 1: Recovery of Human Body Scans
+# SHARP: SHApe Recovery from Partial textured 3D scans
+
+## Challenge 1: Recovery of Human Body Scans
 
 The goal is to recover a reference scan `Y` from a partial version of it `X`.
 The data consists in pairs `(X, Y)` of partial and reference scans.
@@ -13,7 +15,7 @@ provided they are reported.
 In both tracks, the data is split into train/test/eval sets. The train/test
 sets are provided. The eval set is kept secret for the final evaluation.
 
-## Track 1: Recovery of Large Regions
+### Track 1: Recovery of Large Regions
 
 The data is a set of raw scans and 3D body landmarks with the following
 directory structure:
@@ -39,7 +41,7 @@ During the final evaluation:
 
 See below for details on the file formats.
 
-## Track 2: Recovery of Fine Details
+### Track 2: Recovery of Fine Details
 
 The dataset has the following directory structure:
 
@@ -74,7 +76,7 @@ During the final evaluation:
 
 See below for details on the file formats.
 
-## 3D body landmarks
+### 3D body landmarks
 
 The body landmarks are detected automatically on each scan. They are provided
 to generate the partial data but can also be used as part of the proposed
@@ -83,9 +85,9 @@ They comprise standard body joints and other keypoints on the body (eyes, nose,
 ears...). The detection of most landmarks is stable except for the finger
 joints which vary in accuracy.
 
-## Data format
+### Data format
 
-### Meshes
+#### Meshes
 
 The body scans are textured 3D meshes stored in a numpy npz archive.
 
@@ -118,7 +120,7 @@ The following fields define a mesh:
 
 (Other existing fields are either empty and/or should not be relied upon.)
 
-### Landmarks
+#### Landmarks
 
 The landmarks as stored in space-separated text file with columns
 
@@ -134,3 +136,8 @@ For example,
 ```
   elbow_left 1.234 0.123 0.389
 ```
+
+
+## Challenge 2: Recovery of Generic Object Scans
+
+To be completed.
