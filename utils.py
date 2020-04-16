@@ -146,7 +146,8 @@ class Obj:
         self.faces = faces
 
     def write(self, outpath, save_texture = True, verts_to_high_light=None):
-        if not os.path.exists(os.path.dirname(outpath)):
+        out_dir = os.path.dirname(outpath)
+        if out_dir and not os.path.exists(out_dir):
             os.makedirs(os.path.dirname(outpath))
         with open(outpath, 'w') as f:
             if save_texture:
