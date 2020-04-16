@@ -330,69 +330,6 @@ class Obj:
             if intexpath:
                 shutil.copy2(intexpath, outpath)
 
-    def slice_by_plane(self, center, n):
-        c = np.dot(center, n)
-        plane_side = lambda x: np.dot(x, n) >= c
-        split = np.asarray([plane_side(v) for v in self.vertices])
-        slice1_indices = np.argwhere(split == True)
-        slice2_indices = np.argwhere(split == False)
-        return slice1_indices, slice2_indices
-
-    def remove_points(self, indices, blackoutTexture = True):
-        cpy = copy.copy(self)
-        cpy.vertices = np.delete(self.vertices, indices, axis=0)
-        if self.vertex_colors is not None:
-            cpy.vertex_colors = np.delete(self.vertex_colors, indices, axis=0)
-        if self.vertex_normals is not None:
-            cpy.vertex_normals = np.delete(
-                self.vertex_normals, indices, axis=0)
-
-        if self.faces is not None:
-            face_indices = np.where(
-                np.any(np.isin(self.faces[:], indices, assume_unique=False), axis=1))[0]
-            cpy.faces = np.delete(self.faces, face_indices, axis=0)
-            fix_indices = np.vectorize(
-                lambda x: np.sum(x >= indices))(cpy.faces)
-            cpy.faces -= fix_indices
-
-            if self.face_normals is not None:
-                cpy.face_normals = np.delete(
-                    self.face_normals, face_indices, axis=0)
-            unused_uv = None
-            if self.texture_indices is not None:
-                cpy.texture_indices = np.delete(
-                    self.texture_indices, face_indices, axis=0)
-                used_uv = np.unique(cpy.texture_indices.flatten())
-                all_uv = np.arange(len(self.texcoords))
-                unused_uv = np.setdiff1d(all_uv, used_uv, assume_unique=True)
-                fix_uv_idx = np.vectorize(
-                    lambda x: np.sum(x >= unused_uv))(cpy.texture_indices)
-                cpy.texture_indices -= fix_uv_idx
-                cpy.texcoords = np.delete(self.texcoords, unused_uv, axis=0)
-
-                #render texture
-                if blackoutTexture:
-                    tri_indices = cpy.texture_indices
-                    tex_coords = cpy.texcoords
-                    self.read_texture()
-                    img = render_texture(self.texture_image, tex_coords, tri_indices)
-                    #dilate the result to remove sewing
-                    kernel = np.ones((3,3), np.uint8) 
-                    cpy.texture_image = cv2.dilate(img, kernel, iterations=1) 
-
-            if self.faces_normal_indices is not None:
-                cpy.faces_normal_indices = np.delete(
-                    self.faces_normal_indices, face_indices, axis=0)
-                used_ni = np.unique(cpy.faces_normal_indices.flatten())
-                all_ni = np.arange(len(self.face_normals))
-                unused_ni = np.setdiff1d(all_ni, used_ni, assume_unique=True)
-                fix_ni_idx = np.vectorize(lambda x: np.sum(
-                    x > unused_ni))(cpy.faces_normal_indices)
-                cpy.faces_normal_indices -= fix_ni_idx
-                cpy.face_normals = np.delete(
-                    self.face_normals, unused_ni, axis=0)
-
-        return cpy
 
 def render_texture(texture, tex_coords, tri_indices):
     if len(texture.shape) == 3 and texture.shape[2] == 4:
