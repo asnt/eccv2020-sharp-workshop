@@ -129,7 +129,7 @@ The landmarks as stored in space-separated text file with columns
   name x y z
 ```
 
-where `name` is the name of the landmark, and (x, y, z) is its 3D position in
+where `name` is the name of the landmark, and `(x, y, z)` is its 3D position in
 the frame of reference the scan or meshes.
 
 For example,
