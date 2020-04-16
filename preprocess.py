@@ -117,20 +117,23 @@ def shoot(inpath, outpath, num_holes_range=(3, 10), dropout_range=(0.01, 0.05)):
 
 def get_args():
     arg_parser = argparse.ArgumentParser(description='Prepare the data')
-    arg_parser.add_argument("command", choices=['cut', 'shoot'], help="choose the type os partial data generation")
+    arg_parser.add_argument("method", choices=['cut', 'shoot'],
+                            help="method to generate the partial data")
     arg_parser.add_argument("--inpath", type=Path, required=True)
     arg_parser.add_argument("--outpath", type=Path, required=True)
     return arg_parser.parse_args()
 
-def main():    
+
+def main():
     args = get_args()
     inpath = args.inpath
     outpath = args.outpath
-    cmd = args.command
-    if cmd == 'cut':
+    method = args.method
+    if method == 'cut':
         cut(inpath, outpath)
-    elif cmd == 'shoot':
+    elif method == 'shoot':
         shoot(inpath, outpath)
+
 
 if __name__ == "__main__":
     main()
