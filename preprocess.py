@@ -46,7 +46,7 @@ def shoot(inpath, outpath, num_holes_range=(3, 10), dropout_range=(0.01, 0.05)):
 
 
 def get_args():
-    arg_parser = argparse.ArgumentParser(description='Prepare the data')
+    arg_parser = argparse.ArgumentParser(description='Generate partial data')
     arg_parser.add_argument("method", choices=['cut', 'shoot'],
                             help="method to generate the partial data")
     arg_parser.add_argument("--inpath", type=Path, required=True)
