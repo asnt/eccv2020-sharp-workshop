@@ -319,7 +319,7 @@ def load_npz(path):
 
 def save_npz(path, mesh):
     # Texture stored as RGB.
-    texture_bgr = mesh.texture
+    texture_bgr = mesh.texture * 255
     texture_rgb = np.flip(texture_bgr, axis=-1)
 
     np.savez_compressed(
