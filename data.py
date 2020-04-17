@@ -83,11 +83,7 @@ class Mesh:
         return load_mesh(path)
 
     def save(self, path):
-        if str(path).endswith(".obj"):
-            return save_obj(path, self)
-        elif str(path).endswith(".npz"):
-            return save_npz(path, self)
-        raise ValueError(f"unknown mesh format {path}")
+        save_mesh(path, self)
 
 
 def _read_mtl(mtl_path):
