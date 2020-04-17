@@ -11,6 +11,24 @@ Custom ways to generate partial views may be used for augmenting the training
 provided they are reported.
 
 
+## Generate partial data
+
+```bash
+$ python preprocess.py --help
+usage: preprocess.py [-h] --inpath INPATH --outpath OUTPATH {cut,shoot}
+
+Generate partial data
+
+positional arguments:
+  {cut,shoot}        method to generate the partial data
+
+optional arguments:
+  -h, --help         show this help message and exit
+  --inpath INPATH
+  --outpath OUTPATH
+```
+
+
 ## Challenge 1: Recovery of Human Body Scans
 
 In both tracks, the data is split into train/test/eval sets. The train/test
