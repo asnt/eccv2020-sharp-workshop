@@ -6,7 +6,7 @@ import cv2
 import numpy as np
 
 import utils
-from utils import read_3d_landmarks, estimate_plane, Obj, shoot_holes
+from utils import read_3d_landmarks, estimate_plane, shoot_holes
 
 
 def _slice_by_plane(mesh, center, n):
@@ -52,15 +52,14 @@ def _remove_points(mesh, indices, blackoutTexture=True):
             cpy.texture_indices -= fix_uv_idx
             cpy.texcoords = np.delete(mesh.texcoords, unused_uv, axis=0)
 
-            #render texture
+            # render texture
             if blackoutTexture:
                 tri_indices = cpy.texture_indices
                 tex_coords = cpy.texcoords
-                mesh.read_texture()
-                img = utils.render_texture(mesh.texture_image, tex_coords, tri_indices)
-                #dilate the result to remove sewing
+                img = utils.render_texture(mesh.texture, tex_coords, tri_indices)
+                # dilate the result to remove sewing
                 kernel = np.ones((3, 3), np.uint8)
-                cpy.texture_image = cv2.dilate(img, kernel, iterations=1)
+                cpy.texture = cv2.dilate(img, kernel, iterations=1)
 
         if mesh.faces_normal_indices is not None:
             cpy.faces_normal_indices = np.delete(
@@ -78,11 +77,10 @@ def _remove_points(mesh, indices, blackoutTexture=True):
 
 
 def cut(inpath, outpath):
-    mesh = Obj(str(inpath))
+    mesh = utils.load_mesh(str(inpath))
     ldmpath = inpath.parent / 'landmarks3d.txt'
     if ldmpath.exists():
         ldmdict = read_3d_landmarks(str(ldmpath))
-        #print(ldmdict.keys(), ldmdict.values()) 
         pts = list(ldmdict.values())
 
         plausible_ldms = range(26)
@@ -102,17 +100,17 @@ def cut(inpath, outpath):
         outpath1 = str(outpath) + '_slice1.obj'
         outpath2 = str(outpath) + '_slice2.obj'
 
-        slice1.write(outpath1)
-        slice2.write(outpath2)
+        slice1.save(outpath1)
+        slice2.save(outpath2)
     else:
         raise RuntimeError('no landmarks provided')
 
 
 def shoot(inpath, outpath, num_holes_range=(3, 10), dropout_range=(0.01, 0.05)):
-    mesh = Obj(str(inpath))
+    mesh = utils.load_mesh(str(inpath))
     rm_indices = shoot_holes(mesh.vertices, num_holes_range, dropout_range)
     shot = _remove_points(mesh, rm_indices)
-    shot.write(str(outpath))
+    shot.save(str(outpath))
 
 
 def get_args():
