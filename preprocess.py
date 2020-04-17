@@ -29,8 +29,10 @@ def cut(inpath, outpath):
     slice1 = utils.remove_points(mesh, slice1_indices)
     slice2 = utils.remove_points(mesh, slice2_indices)
 
-    outpath1 = str(outpath) + '_slice1.obj'
-    outpath2 = str(outpath) + '_slice2.obj'
+    suffix = outpath.suffix
+    stem = outpath.stem
+    outpath1 = outpath.with_name(stem + '_slice1' + suffix)
+    outpath2 = outpath.with_name(stem + '_slice2' + suffix)
 
     slice1.save(outpath1)
     slice2.save(outpath2)
