@@ -3,14 +3,15 @@ from pathlib import Path
 
 import numpy as np
 
+import data
 import utils
 
 
 def cut(inpath, outpath):
-    mesh = utils.load_mesh(str(inpath))
+    mesh = data.load_mesh(str(inpath))
     ldmpath = inpath.parent / 'landmarks3d.txt'
     if ldmpath.exists():
-        ldmdict = utils.read_3d_landmarks(str(ldmpath))
+        ldmdict = data.read_3d_landmarks(str(ldmpath))
         pts = list(ldmdict.values())
 
         plausible_ldms = range(26)
@@ -37,7 +38,7 @@ def cut(inpath, outpath):
 
 
 def shoot(inpath, outpath, num_holes_range=(3, 10), dropout_range=(0.01, 0.05)):
-    mesh = utils.load_mesh(str(inpath))
+    mesh = data.load_mesh(str(inpath))
     rm_indices = utils.shoot_holes(mesh.vertices, num_holes_range, dropout_range)
     shot = utils.remove_points(mesh, rm_indices)
     shot.save(str(outpath))
