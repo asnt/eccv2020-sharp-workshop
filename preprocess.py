@@ -10,31 +10,30 @@ import utils
 def cut(inpath, outpath):
     mesh = data.load_mesh(str(inpath))
     ldmpath = inpath.parent / 'landmarks3d.txt'
-    if ldmpath.exists():
-        ldmdict = data.read_3d_landmarks(str(ldmpath))
-        pts = list(ldmdict.values())
+    if not ldmpath.exists():
+        raise RuntimeError(f'landmarks not found {ldmpath}')
+    ldmdict = data.read_3d_landmarks(str(ldmpath))
+    pts = list(ldmdict.values())
 
-        plausible_ldms = range(26)
-        #get random subset of 3 landmarks
-        #A, B, C = ldmdict['shoulder_right'],  ldmdict['shoulder_left'], ldmdict['hip_middle']
-        indices = np.random.choice(plausible_ldms, 3, replace=False)
-        A, B, C = pts[indices[0]], pts[indices[1]], pts[indices[2]]
+    plausible_ldms = range(26)
+    #get random subset of 3 landmarks
+    #A, B, C = ldmdict['shoulder_right'],  ldmdict['shoulder_left'], ldmdict['hip_middle']
+    indices = np.random.choice(plausible_ldms, 3, replace=False)
+    A, B, C = pts[indices[0]], pts[indices[1]], pts[indices[2]]
 
-        #estimate cutting plane parameters
-        c, n = utils.estimate_plane(A, B, C)
+    #estimate cutting plane parameters
+    c, n = utils.estimate_plane(A, B, C)
 
-        #get two slices
-        slice1_indices, slice2_indices = utils.slice_by_plane(mesh, c, n)
-        slice1 = utils.remove_points(mesh, slice1_indices)
-        slice2 = utils.remove_points(mesh, slice2_indices)
+    #get two slices
+    slice1_indices, slice2_indices = utils.slice_by_plane(mesh, c, n)
+    slice1 = utils.remove_points(mesh, slice1_indices)
+    slice2 = utils.remove_points(mesh, slice2_indices)
 
-        outpath1 = str(outpath) + '_slice1.obj'
-        outpath2 = str(outpath) + '_slice2.obj'
+    outpath1 = str(outpath) + '_slice1.obj'
+    outpath2 = str(outpath) + '_slice2.obj'
 
-        slice1.save(outpath1)
-        slice2.save(outpath2)
-    else:
-        raise RuntimeError('no landmarks provided')
+    slice1.save(outpath1)
+    slice2.save(outpath2)
 
 
 def shoot(inpath, outpath, num_holes_range=(3, 10), dropout_range=(0.01, 0.05)):
