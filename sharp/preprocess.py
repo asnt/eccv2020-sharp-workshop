@@ -3,8 +3,8 @@ from pathlib import Path
 
 import numpy as np
 
-import data
-import utils
+from . import data
+from . import utils
 
 
 def cut(inpath, outpath):
