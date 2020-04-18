@@ -14,7 +14,7 @@ provided they are reported.
 ## Generate partial data
 
 ```bash
-$ python preprocess.py --help
+$ python -m sharp.preprocess --help
 usage: preprocess.py [-h] --inpath INPATH --outpath OUTPATH {cut,shoot}
 
 Generate partial data
