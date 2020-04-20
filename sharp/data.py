@@ -211,6 +211,7 @@ def load_obj(path):
             vertex_colors=vertex_colors if len(vertex_colors) > 0 else None,
             faces=faces,
             faces_normal_indices=faces_normal_indices,
+            normals=normals if len(normals) > 0 else None,
             texcoords=texcoords if len(texcoords) > 0 else None,
             texture=texture,
             texture_indices=texture_indices,
