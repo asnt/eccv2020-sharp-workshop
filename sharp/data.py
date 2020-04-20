@@ -72,11 +72,11 @@ class Mesh:
         self.faces = faces
         self.face_normals = face_normals
         self.faces_normal_indices = faces_normal_indices
-        self.normals = None
+        self.normals = normals
         self.texcoords = texcoords
         self.texture_indices = texture_indices
         self.texture = texture
-        self.material = None
+        self.material = material
 
     @staticmethod
     def load(path):
