@@ -152,7 +152,7 @@ def _parse_faces(obj_faces):
 
     faces = np.array(faces, dtype=int)
     faces_texture = (np.array(faces_texture, dtype=int)
-                     if faces_textures is not None
+                     if faces_texture is not None
                      else None)
     faces_normals = (np.array(faces_normals, dtype=int)
                      if faces_normals is not None
