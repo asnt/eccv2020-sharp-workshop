@@ -132,11 +132,11 @@ def _parse_faces(obj_faces):
         fv, ft, fn = [], [], []
         arrs = (fv, ft, fn)
         for element in obj_face:
-            o = face_pattern.match(element)
-            if o:
-                for i, g in enumerate(o.groups()):
-                    if len(g):
-                        arrs[i].append(int(g))
+            match = face_pattern.match(element)
+            if match:
+                for i, group in enumerate(match.groups()):
+                    if len(group):
+                        arrs[i].append(int(group))
         if len(fv):
             faces.append(fv)
             if len(ft):
