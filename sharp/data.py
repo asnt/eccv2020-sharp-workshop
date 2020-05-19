@@ -127,7 +127,7 @@ def _parse_faces(obj_faces):
     face_pattern = re.compile('(\d+)/?(\d*)?/?(\d*)?')
     faces = []
     faces_normals = []
-    faces_textures = []
+    faces_texture = []
     for obj_face in obj_faces:
         fv, ft, fn = [], [], []
         arrs = (fv, ft, fn)
@@ -140,10 +140,10 @@ def _parse_faces(obj_faces):
         if len(fv) > 0:
             faces.append(fv)
             if len(ft) > 0:
-                faces_textures.append(ft)
+                faces_texture.append(ft)
             else:
                 el = [-1 for x in range(len(fv))]
-                faces_textures.append(el)
+                faces_texture.append(el)
             if len(fn) > 0:
                 faces_normals.append(fn)
             # else:
@@ -151,19 +151,19 @@ def _parse_faces(obj_faces):
             #     faces_normals.append(el)
 
     faces = np.array(faces, dtype=int)
-    faces_textures = (np.array(faces_textures, dtype=int)
-                      if faces_textures is not None
-                      else None)
+    faces_texture = (np.array(faces_texture, dtype=int)
+                     if faces_textures is not None
+                     else None)
     faces_normals = (np.array(faces_normals, dtype=int)
                      if faces_normals is not None
                      else None)
 
     # Change to zero-based indexing.
     faces -= 1
-    faces_textures -= 1
+    faces_texture -= 1
     faces_normals -= 1
 
-    return faces, faces_textures, faces_normals
+    return faces, faces_texture, faces_normals
 
 
 def _complete_texcoords(texcoords, texture_indices):
