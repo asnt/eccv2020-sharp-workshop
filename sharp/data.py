@@ -34,12 +34,24 @@ def read_3d_landmarks(inpath):
 
 
 def imread(path):
+    """Read a color image.
+
+    Return an image in RGB format with float values into [0, 1].
+    """
     img = cv2.imread(str(path))
+    # Convert to RGB. OpenCV returns BGR.
+    img = img[..., ::-1]
     return img.astype(float) / np.iinfo(img.dtype).max
 
 
-def imwrite(path, img, dtype=np.uint16):
+def imwrite(path, img, dtype=np.uint8):
+    """Save an RGB image to a file.
+
+    Expect float values into [0, 1].
+    """
     img = (img * np.iinfo(dtype).max).astype(dtype)
+    # OpenCV expects BGR.
+    img = img[..., ::-1]
     cv2.imwrite(str(path), img)
 
 
@@ -303,9 +315,8 @@ Ns 1000
 def load_npz(path):
     data = np.load(path)
 
-    # The processing routines assume BGR format.
-    texture_rgb = data.f.texture.astype(float) / 255
-    texture_bgr = np.flip(texture_rgb, axis=-1)
+    assert data.f.texture.dtype == np.uint8
+    texture = data.f.texture.astype(float) / 255
 
     return Mesh(
         path=path,
@@ -313,22 +324,18 @@ def load_npz(path):
         faces=data.f.faces.astype(int),
         texcoords=data.f.texcoords.astype(float),
         texture_indices=data.f.texcoords_indices.astype(int),
-        texture=texture_bgr,
+        texture=texture,
     )
 
 
 def save_npz(path, mesh):
-    # Texture stored as RGB.
-    texture_bgr = mesh.texture * 255
-    texture_rgb = np.flip(texture_bgr, axis=-1)
-
     np.savez_compressed(
         path,
         vertices=mesh.vertices.astype("float32"),
         faces=mesh.faces.astype("uint32"),
         texcoords=mesh.texcoords.astype("float32"),
         texcoords_indices=mesh.texture_indices.astype("uint32"),
-        texture=texture_rgb.astype("uint8"),
+        texture=(255 * mesh.texture).astype("uint8"),
     )
 
 
