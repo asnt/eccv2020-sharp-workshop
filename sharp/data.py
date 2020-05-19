@@ -196,6 +196,8 @@ def load_obj(path):
             vertex_colors = vertices[:, 3:]
         vertices = vertices[:, :3]
 
+        texcoords = np.array(texcoords)
+
         faces, texture_indices, faces_normal_indices = _parse_faces(faces)
 
         if normals:
