@@ -34,7 +34,7 @@ def read_3d_landmarks(inpath):
 
 
 def imread(path):
-    img = cv2.imread(str(path), -1)
+    img = cv2.imread(str(path))
     return img.astype(float) / np.iinfo(img.dtype).max
 
 
