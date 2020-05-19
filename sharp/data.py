@@ -124,7 +124,7 @@ def _parse_faces(obj_faces):
         faces_texture
         faces_normals
     """
-    face_pattern = re.compile('(\d+)/?(\d*)?/?(\d*)?')
+    face_pattern = re.compile(r'(\d+)/?(\d*)?/?(\d*)?')
     faces = []
     faces_normals = []
     faces_texture = []
