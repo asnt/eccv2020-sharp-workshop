@@ -113,15 +113,25 @@ def _read_mtl(mtl_path):
     return None
 
 
-def _parse_faces(faces):
+def _parse_faces(obj_faces):
+    """Parse the OBJ encoding of the face attribute index buffers.
+
+    A value of -1 in the index array of the texture means the index is
+    undefined (i.e. no texture is mapped to this face corner).
+
+    Returns:
+        faces
+        faces_texture
+        faces_normals
+    """
     face_pattern = re.compile('(\d+)/?(\d*)?/?(\d*)?')
     p_faces = []
     p_faces_normals = []
     p_face_textures = []
-    for face in faces:
+    for obj_face in obj_faces:
         fv, ft, fn = [], [], []
         arrs = (fv, ft, fn)
-        for element in face:
+        for element in obj_face:
             o = face_pattern.match(element)
             if o:
                 for i, g in enumerate(o.groups()):
@@ -132,7 +142,7 @@ def _parse_faces(faces):
             if len(ft):
                 p_face_textures.append(ft)
             else:
-                el = ['' for x in range(len(fv))]
+                el = [-1 for x in range(len(fv))]
                 p_face_textures.append(el)
             if len(fn):
                 p_faces_normals.append(fn)
@@ -140,19 +150,35 @@ def _parse_faces(faces):
             #     el = ['' for x in range(len(fv))]
             #     p_faces_normals.append(el)
 
-    if len(p_faces):
-        # they start from 1 in OBJ file
-        p_faces = np.array([np.array(p) - 1 for p in p_faces])
-    if len(p_faces_normals):
-        p_faces_normals = np.array([np.array(p) - 1 for p in p_faces_normals])
-    else:
-        p_faces_normals = None
-    if len(p_face_textures):
-        p_face_textures = np.array([np.array(p) - 1 for p in p_face_textures])
-    else:
-        p_face_textures = None
+    p_faces = np.array(p_faces, dtype=int)
+    p_face_textures = (np.array(p_face_textures, dtype=int)
+                       if p_face_textures is not None
+                       else None)
+    p_faces_normals = (np.array(p_faces_normals, dtype=int)
+                       if p_faces_normals is not None
+                       else None)
+
+    # Change to zero-based indexing.
+    p_faces -= 1
+    p_face_textures -= 1
+    p_faces_normals -= 1
 
     return p_faces, p_face_textures, p_faces_normals
+
+
+def _complete_texcoords(texcoords, texture_indices):
+    """Ensure all face reference some texture coordinates.
+
+    Make untextured faces reference a new dummy texture coordinate.
+    The new texture coordinate is placed at `(u, v) = (0, 0)`, assuming no
+    texture exists there (i.e. black color).
+    """
+    no_texcoords = texture_indices < 0
+    if np.any(no_texcoords):
+        texcoords = np.append(texcoords, [[.0, .0]], axis=0)
+        new_index = len(texcoords) - 1
+        texture_indices[no_texcoords] = new_index
+    return texcoords, texture_indices
 
 
 def _load_texture(path):
@@ -211,6 +237,9 @@ def load_obj(path):
         texcoords = np.array(texcoords)
 
         faces, texture_indices, faces_normal_indices = _parse_faces(faces)
+
+        texcoords, texture_indices = _complete_texcoords(texcoords,
+                                                         texture_indices)
 
         if normals:
             normals = np.array(normals)
