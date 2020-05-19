@@ -125,9 +125,9 @@ def _parse_faces(obj_faces):
         faces_normals
     """
     face_pattern = re.compile('(\d+)/?(\d*)?/?(\d*)?')
-    p_faces = []
-    p_faces_normals = []
-    p_face_textures = []
+    faces = []
+    faces_normals = []
+    faces_textures = []
     for obj_face in obj_faces:
         fv, ft, fn = [], [], []
         arrs = (fv, ft, fn)
@@ -138,32 +138,32 @@ def _parse_faces(obj_faces):
                     if len(g):
                         arrs[i].append(int(g))
         if len(fv):
-            p_faces.append(fv)
+            faces.append(fv)
             if len(ft):
-                p_face_textures.append(ft)
+                faces_textures.append(ft)
             else:
                 el = [-1 for x in range(len(fv))]
-                p_face_textures.append(el)
+                faces_textures.append(el)
             if len(fn):
-                p_faces_normals.append(fn)
+                faces_normals.append(fn)
             # else:
             #     el = ['' for x in range(len(fv))]
-            #     p_faces_normals.append(el)
+            #     faces_normals.append(el)
 
-    p_faces = np.array(p_faces, dtype=int)
-    p_face_textures = (np.array(p_face_textures, dtype=int)
-                       if p_face_textures is not None
+    faces = np.array(faces, dtype=int)
+    faces_textures = (np.array(faces_textures, dtype=int)
+                       if faces_textures is not None
                        else None)
-    p_faces_normals = (np.array(p_faces_normals, dtype=int)
-                       if p_faces_normals is not None
+    faces_normals = (np.array(faces_normals, dtype=int)
+                       if faces_normals is not None
                        else None)
 
     # Change to zero-based indexing.
-    p_faces -= 1
-    p_face_textures -= 1
-    p_faces_normals -= 1
+    faces -= 1
+    faces_textures -= 1
+    faces_normals -= 1
 
-    return p_faces, p_face_textures, p_faces_normals
+    return faces, faces_textures, faces_normals
 
 
 def _complete_texcoords(texcoords, texture_indices):
