@@ -167,7 +167,7 @@ def _parse_faces(obj_faces):
 
 
 def _complete_texcoords(texcoords, texture_indices):
-    """Ensure all face reference some texture coordinates.
+    """Ensure all faces reference some texture coordinates.
 
     Make untextured faces reference a new dummy texture coordinate.
     The new texture coordinate is placed at `(u, v) = (0, 0)`, assuming no
