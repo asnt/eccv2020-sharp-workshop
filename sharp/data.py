@@ -133,18 +133,18 @@ def _parse_faces(obj_faces):
         arrs = (fv, ft, fn)
         for element in obj_face:
             match = face_pattern.match(element)
-            if match:
+            if match is not None:
                 for i, group in enumerate(match.groups()):
-                    if len(group):
+                    if len(group) > 0:
                         arrs[i].append(int(group))
-        if len(fv):
+        if len(fv) > 0:
             faces.append(fv)
-            if len(ft):
+            if len(ft) > 0:
                 faces_textures.append(ft)
             else:
                 el = [-1 for x in range(len(fv))]
                 faces_textures.append(el)
-            if len(fn):
+            if len(fn) > 0:
                 faces_normals.append(fn)
             # else:
             #     el = ['' for x in range(len(fv))]
