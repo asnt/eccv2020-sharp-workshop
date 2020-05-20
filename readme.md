@@ -37,9 +37,9 @@ or surface-to-surface distance from `Y` to `X`.
 
 ## Challenges
 
-- Challenge 1: Recovery of Human Body Scans
-  - [Track 1: Recovery of large regions](doc/challenge1_1.md)
-  - [Track 2: Recovery of fine details](doc/challenge1_2.md)
+- [Challenge 1: Recovery of Human Body Scans](doc/challenge1.md)
+  - Track 1: Recovery of large regions
+  - Track 2: Recovery of fine details
 - [Challenge 2: Recovery of Generic Object Scans](doc/challenge2.md)
 
 ## Partial data
