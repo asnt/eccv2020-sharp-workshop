@@ -37,23 +37,11 @@ the competition.
 The submissions are evaluated quantitatively by computing the point-to-surface
 or surface-to-surface distance from `Y` to `X`.
 
-## Datasets
-
-1. 3DBodyTex-2: a dataset of 3D human scans (extending
-   [3DBodyTex](https://cvi2.uni.lu/datasets/)).
-2. 3DObjectTex: a dataset of 3D scans of generic objects.
-
-## Challenges
+Detailed instructions:
 
 - [Challenge 1: Recovery of Human Body Scans](doc/challenge1.md)
   - Track 1: Recovery of large regions
   - Track 2: Recovery of fine details
 - [Challenge 2: Recovery of Generic Object Scans](doc/challenge2.md)
-
-## Partial data
-
 - [Generation of partial data](doc/partial_data.md)
-
-## Evaluation and metrics
-
 - [Evaluation and metrics]()
