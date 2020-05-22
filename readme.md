@@ -1,5 +1,12 @@
 # SHARP: SHApe Recovery from Partial textured 3D scans
 
+Workshop and challenge in conjunction with
+[ECCV 2020](https://eccv2020.eu/workshops/).
+
+[SHARP 2020 website](https://cvi2.uni.lu/sharp2020/)
+
+Organised by [CVI²](https://cvi2.uni.lu) & [Artec3D](https://artec-europe.com).
+
 ## Overview
 
 The goal of the competition is to recover a reference textured scan `Y` from a
