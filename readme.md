@@ -25,9 +25,9 @@ There are two challenges, one per dataset.
 The *ground-truth shapes*, `Y`, are the raw scans, or the fitted body models in
 a variant of the challenge on human scans.
 
-The *partial scans*, `X`, are generated synthetically from the
-ground-truth shapes, `Y`.
-The idea is, for example, to simulate the partial acquisition of an object with
+The *partial scans*, `X`, are generated synthetically from the ground-truth
+shapes, `Y`.
+The idea is to simulate the partial acquisition produced by a 3D scanner, e.g.
 a hand-held scanner.
 
 For *training*, only the ground-truth shapes, `Y`, are provided.
