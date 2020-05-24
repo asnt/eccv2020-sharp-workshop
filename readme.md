@@ -22,8 +22,8 @@ scans:
 
 There are two challenges, one per dataset.
 
-The *ground-truth shapes*, `Y`, are the raw scans, or fitted body models in a
-variant of the challenge on human scans.
+The *ground-truth shapes*, `Y`, are the raw scans, or the fitted body models in
+a variant of the challenge on human scans.
 
 The *partial scans*, `X`, are generated synthetically from the
 ground-truth shapes, `Y`.
