@@ -11,7 +11,7 @@ Organised by [CVI²](https://cvi2.uni.lu) & [Artec3D](https://artec-europe.com).
 
 The goal of the competition is to recover a reference textured scan `Y` from a
 partial version of it `X`.
-This is a shape and texture *completion task*.
+This is a *completion task* of 3D shape and texture.
 
 The data consists in pairs `(X, Y)` generated from two datasets of 3D textured
 scans:
