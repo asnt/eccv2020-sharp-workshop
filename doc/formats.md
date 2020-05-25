@@ -9,9 +9,9 @@ The meshes of generic objects are stored in
 
 ### Npz mesh
 
-The body scans are textured 3D meshes stored in a
+The body scans are textured 3D meshes stored in
 [numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez_compressed.html)
-archive.
+archives.
 
 The following arrays define a mesh:
 
