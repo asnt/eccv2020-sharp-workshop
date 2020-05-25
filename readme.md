@@ -43,7 +43,7 @@ the competition.
 The submissions are evaluated quantitatively by computing the point-to-surface
 or surface-to-surface distance from `Y` to `X`.
 
-Detailed instructions:
+## Detailed instructions
 
 - [Challenge 1: Recovery of Human Body Scans](doc/challenge_1.md)
   - [Track 1: Recovery of large regions](doc/challenge_1_track_1.md)
