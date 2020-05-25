@@ -13,8 +13,8 @@ The goal of the competition is to recover a reference textured scan `Y` from a
 partial version of it `X`.
 This is a *completion task* of 3D shape and texture.
 
-The data consists in pairs `(X, Y)` generated from two datasets of 3D textured
-scans:
+The data consists in pairs `(X, Y)` generated from two
+[datasets](doc/datasets.md) of 3D textured scans:
 
 1. 3DBodyTex-2: a dataset of 3D human scans (extending
    [3DBodyTex](https://cvi2.uni.lu/datasets/)).
@@ -49,6 +49,7 @@ or surface-to-surface distance from `Y` to `X`.
   - [Track 1: Recovery of large regions](doc/challenge_1_track_1.md)
   - [Track 2: Recovery of fine details](doc/challenge_1_track_1.md)
 - [Challenge 2: Recovery of Generic Object Scans](doc/challenge_2.md)
+- [Datasets](doc/datasets.md)
 - [Generation of partial data](doc/partial_data.md)
 - [Evaluation and metrics]()
 - [Data formats](doc/formats.md)
