@@ -2,19 +2,13 @@
 
 ## Meshes
 
-The body scans are textured 3D meshes stored in a numpy npz archive.
+### Npz mesh
 
-Load and access arrays from an npz file in Python with
+The body scans are textured 3D meshes stored in a
+[numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez_compressed.html)
+archive.
 
-```python
-  import numpy as np
-  mesh = np.load("name.npz", allow_pickle=True)
-  mesh["vertices"]
-  mesh["faces"]
-  # ...
-```
-
-The following fields define a mesh:
+The following arrays define a mesh:
 
 * `vertices`, float (N, 3):
     The 3D positions of the vertices. Variable number of vertices across the
@@ -31,7 +25,17 @@ The following fields define a mesh:
 * `texture`, uint8 (2048, 2048, 3):
     The RGB texture image.
 
-(Other existing fields are either empty and/or should not be relied upon.)
+The mesh can be loaded with `np.load`, for example:
+
+```python
+  import numpy as np
+  mesh = np.load("name.npz", allow_pickle=True)
+  mesh["vertices"]
+  mesh["faces"]
+  # ...
+```
+
+(Fields not described above should not be relied upon.)
 
 ## Landmarks
 
