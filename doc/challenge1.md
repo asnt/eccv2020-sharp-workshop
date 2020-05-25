@@ -60,8 +60,9 @@ The files are:
 
 * `<scan_name>_normalized.npz`:
   The ground-truth raw scan, `Y`, as a textured mesh.
-  Stored in a numpy npz archive.
 * `landmarks3d.txt`: 3D positions of detected body landmarks.
+
+See [formats](formats.md) for the mesh and landmark data formats.
 
 ### Evaluation data
 
