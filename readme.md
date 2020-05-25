@@ -5,7 +5,7 @@
 A workshop and challenge in conjunction with
 [ECCV 2020](https://eccv2020.eu/workshops/).
 
-Organised by [CVI²](https://cvi2.uni.lu) & [Artec3D](https://artec-europe.com).
+Organised by [CVI²](https://cvi2.uni.lu) & [Artec3D](https://www.artec3d.com).
 
 ## Overview
 
