@@ -104,11 +104,11 @@ The data files must be organised in this directory structure:
 ```
   eval/
     <scan_name>/
-      <scan_name>_partial.(npz|obj)
+      completed.(npz|obj)
     .../
 ```
 
-where `<scan_name>` is correponds to the input data.
+where `<scan_name>` correponds to the name of the input scan.
 
 
 ## Track 2: Recovery of Fine Details
