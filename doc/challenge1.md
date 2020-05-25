@@ -99,7 +99,8 @@ A mixture of vertex colour attribute and texture mapping is not allowed.
 
 The mesh geometry may be different than the input, `X`.
 
-The data files must be organised in this directory structure:
+The submission must be a `.zip` archive that unfolds in this directory
+structure:
 
 ```
   eval/
@@ -108,7 +109,7 @@ The data files must be organised in this directory structure:
     .../
 ```
 
-where `<scan_name>` correponds to the name of the input scan.
+where `<scan_name>` correponds to the name of the input scans.
 
 
 ## Track 2: Recovery of Fine Details
