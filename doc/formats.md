@@ -2,7 +2,7 @@
 
 ## Meshes
 
-### Wavefront obj mesh
+### Wavefront OBJ mesh
 
 The meshes of generic objects are stored in
 [Wavefront `.obj`](https://en.wikipedia.org/wiki/Wavefront_.obj_file).
