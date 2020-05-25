@@ -43,19 +43,26 @@ The mesh can be loaded with `np.load`, for example:
 
 (Fields not described above should not be relied upon.)
 
-## Landmarks
+## Body landmarks
 
-The landmarks as stored in space-separated text file with columns
+3D positions of detected body landmarks are provided
+in the training data of [Challenge 1](doc/challenge_1.md).
+They are stored in files with name `landmarks3d.txt`.
+The format is plain text and tabular, with one landmark per row and one space
+between columns:
 
 ```
   name x y z
 ```
 
-where `name` is the name of the landmark, and `(x, y, z)` is its 3D position in
-the frame of reference the scan or meshes.
+with `name`, the name of the landmark, and `(x, y, z)`, its 3D position in
+the frame of reference of the scan or mesh.
+If the landmark was not detected, the coordinates are `nan`.
 
 For example,
 
 ```
   elbow_left 1.234 0.123 0.389
+  finger_thumb_top_left nan nan nan
+  ...
 ```
