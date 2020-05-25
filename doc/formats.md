@@ -1,4 +1,4 @@
-# Data format
+# Data formats
 
 ## Meshes
 
