@@ -51,3 +51,4 @@ Detailed instructions:
 - [Challenge 2: Recovery of Generic Object Scans](doc/challenge_2.md)
 - [Generation of partial data](doc/partial_data.md)
 - [Evaluation and metrics]()
+- [Data formats](doc/formats.md)
