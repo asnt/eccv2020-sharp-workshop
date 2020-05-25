@@ -48,6 +48,6 @@ Detailed instructions:
 - [Challenge 1: Recovery of Human Body Scans](doc/challenge_1.md)
   - [Track 1: Recovery of large regions](doc/challenge_1_track_1.md)
   - [Track 2: Recovery of fine details](doc/challenge_1_track_1.md)
-- [Challenge 2: Recovery of Generic Object Scans](doc/challenge2.md)
+- [Challenge 2: Recovery of Generic Object Scans](doc/challenge_2.md)
 - [Generation of partial data](doc/partial_data.md)
 - [Evaluation and metrics]()
