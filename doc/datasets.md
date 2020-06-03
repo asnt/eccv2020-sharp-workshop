@@ -6,6 +6,7 @@ the SHARP competition.
 ## 3DBodyTex 2
 
 3DBodyTex 2 contains about 3200 human scans.
+It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 
 clothing\pose | all | U | A | run | scape | free
 -|-|-|-|-|-|-
