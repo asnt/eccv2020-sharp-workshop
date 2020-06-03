@@ -46,7 +46,7 @@ The mesh can be loaded with `np.load`, for example:
 ## Body landmarks
 
 3D positions of detected body landmarks are provided
-in the training data of [Challenge 1](doc/challenge_1.md).
+in the training data of [Challenge 1](challenge_1.md).
 They are stored in files with name `landmarks3d.txt`.
 The format is plain text and tabular, with one landmark per row and one space
 between columns:
