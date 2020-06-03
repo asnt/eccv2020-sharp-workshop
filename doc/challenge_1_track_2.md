@@ -1,5 +1,10 @@
 # Challenge 1 - Track 2: Recovery of Fine Details in Human Scans
 
+Given a partial human body scan, `X`, the goal is to recover the complete scan,
+`Y`.
+
+This challenge uses the [3DBodyTex 2](dataset_3dbodytex2.md) dataset.
+
 The dataset has the following directory structure:
 
 ```
