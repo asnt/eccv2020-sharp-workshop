@@ -14,7 +14,7 @@ The body scans are textured 3D meshes stored in
 [numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez.html)
 archives.
 
-The following arrays define a mesh:
+The following arrays inside the `.npz` define a mesh:
 
 * `vertices`, float (N, 3):
     The 3D positions of the vertices.
@@ -31,6 +31,8 @@ The following arrays define a mesh:
 * `texture`, uint8 (2048, 2048, 3):
     The RGB texture image.
 
+Fields not described above should not be relied upon.
+
 The mesh can be loaded with `np.load`, for example:
 
 ```python
@@ -40,8 +42,6 @@ The mesh can be loaded with `np.load`, for example:
   mesh["faces"]
   # ...
 ```
-
-(Fields not described above should not be relied upon.)
 
 ## Body landmarks
 
