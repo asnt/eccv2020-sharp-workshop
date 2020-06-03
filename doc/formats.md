@@ -17,8 +17,8 @@ archives.
 The following arrays define a mesh:
 
 * `vertices`, float (N, 3):
-    The 3D positions of the vertices. Variable number of vertices across the
-    meshes.
+    The 3D positions of the vertices.
+    N varies across the meshes.
 * `faces`, int (20000, 3):
     The vertex indices defining the faces in 3D space (i.e. triplets of indices
     into the `vertices` array). Fixed number of faces (20000) for all meshes.
