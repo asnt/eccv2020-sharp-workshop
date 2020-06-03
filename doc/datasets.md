@@ -10,12 +10,52 @@ the SHARP competition.
 
 ### 3D body landmarks
 
-The body landmarks are detected automatically on each scan. They are provided
-to generate the partial data but can also be used as part of the proposed
-method.
+67 body landmarks are detected automatically on each scan.
+They are provided to generate the partial data but can also be used for
+training.
 They comprise standard body joints and other keypoints on the body (eyes, nose,
-ears...). The detection of most landmarks is stable except for the finger
-joints which vary in accuracy.
+ears...).
+The detection of most landmarks is stable except for the finger joints and
+finger tips.
+
+#### Body joints (20)
+
+| landmark name    |
+| -                |
+| ankle_\<side>    |
+| elbow_\<side>    |
+| heel_\<side>     |
+| hip_\<side>      |
+| hip_middle       |
+| knee_\<side>     |
+| neck             |
+| shoulder_\<side> |
+| toe_1_\<side>    |
+| toe_5_\<side>    |
+| wrist_\<side>    |
+
+`<side>` is `left` or `right`.
+
+#### Face landmarks (5)
+
+| landmark name |
+| -             |
+| ear_\<side>   |
+| eye_\<side>   |
+| nose          |
+
+#### Finger joints and tips (42)
+
+| landmark name                    |
+| -                                |
+| finger_baby_\<knuckle>_\<side>   |
+| finger_index_\<knuckle>_\<side>  |
+| finger_middle_\<knuckle>_\<side> |
+| finger_ring_\<knuckle>_\<side>   |
+| finger_thumb_\<knuckle>_\<side>  |
+| hand_base_\<side>                |
+
+`<knuckle>` is one of `base`, `middle`, `top`, `tip`.
 
 
 ## 3DObjectTex
