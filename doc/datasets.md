@@ -7,6 +7,12 @@ the SHARP competition.
 
 3DBodyTex 2 contains about 3200 human scans.
 
+clothing\pose | all | U | A | run | scape | free
+-|-|-|-|-|-|-
+fitness | | | | | |
+casual | | | | | |
+all | | | | | |
+
 
 ### 3D body landmarks
 
