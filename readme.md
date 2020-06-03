@@ -50,6 +50,7 @@ or surface-to-surface distance from `Y` to `X`.
   - [Track 2: Recovery of fine details](doc/challenge_1_track_1.md)
 - [Challenge 2: Recovery of Generic Object Scans](doc/challenge_2.md)
 - [Datasets](doc/datasets.md)
+- [Dataset splits](doc/dataset_splits.md)
 - [Generation of partial data](doc/partial_data.md)
 - [Evaluation and metrics]()
 - [Data formats](doc/formats.md)
