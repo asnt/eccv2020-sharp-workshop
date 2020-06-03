@@ -31,6 +31,21 @@ It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 [shapify booth]: https://www.artec3d.com/portable-3d-scanners/shapifybooth
 
 
+## Usage in the SHARP [Challenge 1](challenge_1.md)
+
+### [Track 1](challenge_1_track_1.md): Recovery of large regions
+
+- The ground truth is `Y`.
+- The partial scans are generated from `Y`.
+- The 3D landmarks are provided at training time only, not at evaluation time.
+
+### [Track 2](challenge_1_track_2.md): Recovery of fine details
+
+- The ground truth is `Yf`.
+- The partial scans are generated from `Ys`.
+- The 3D landmarks are provided at training only, not at evaluation time.
+
+
 ## Statistics
 
 Number of scans for different types of clothing and pose:
