@@ -59,7 +59,7 @@ structure:
     .../
 ```
 
-where `<scan_name>` correponds to the name of the input scans.
+where `<scan_name>` correponds to the name of the input scan.
 
 
 ## Directory structure of the dataset
