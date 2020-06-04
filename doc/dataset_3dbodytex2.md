@@ -3,6 +3,8 @@
 3DBodyTex 2 contains thousands of 3D textured human scans.
 It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 
+![Sample scans from the 3DBodyTex 2 dataset](3dbodytex2.png)
+
 ## Content
 
 - 3D human scans (`Y`):
