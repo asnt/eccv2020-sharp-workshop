@@ -59,7 +59,7 @@ The dataset has the following directory structure:
     <scan_name>/
       fitted_textured.npz
       fusion_textured.npz
-      <scan_name>-synthetic-partial-<xyz>.npz
+      <scan_name>-synthetic-partial.npz
       landmarks3d.txt
     .../
 ```
@@ -78,10 +78,8 @@ The files are:
   This is a textured mesh obtained by simulating the scanning process in
   software on `Yf`.
   It is less detailed and contains artefacts similar to a real 3D scan.
-* `<scan_name>-synthetic-partial-<xyz>.npz` = `X`:
+* `<scan_name>-synthetic-partial.npz` = `X`:
   Partial scan generated from `Ys`.
-  `<xyz>` indicates the instance number if there are several partial scans
-  (i.e. `000`, `001`, `002`...).
 * `landmarks3d.txt`:
   The 3D positions of the detected 3D landmarks.
   They are common to both meshes.

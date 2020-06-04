@@ -80,7 +80,7 @@ The data files are arranged in the following directory structure:
   eval/
     <scan_name>/
       <scan_name>_normalized.npz
-      <scan_name>-partial-<xyz>.npz
+      <scan_name>-partial.npz
       landmarks3d.txt
     .../
 ```
@@ -91,10 +91,8 @@ The files are:
 
 * `<scan_name>_normalized.npz` = `Y`:
   The ground-truth raw scan, `Y`, as a textured mesh.
-* `<scan_name>-partial-<xyz>.npz` = `X`:
+* `<scan_name>-partial.npz` = `X`:
   Partial scan generated from `Ys`.
-  `<xyz>` indicates the instance number if there are several partial scans
-  (i.e. `000`, `001`, `002`...).
 * `landmarks3d.txt`: 3D positions of detected body landmarks.
 
 See [formats](formats.md) for the mesh and landmark data formats.
