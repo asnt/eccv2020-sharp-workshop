@@ -21,30 +21,6 @@ The body landmarks are used to generate the partial data.
 They mayb be freely exploited during training but they are not provided for the
 final evaluation.
 
-The data files are arranged in the following directory structure:
-
-```
-  train/
-    <scan_name>/
-      <scan_name>_normalized.npz
-      landmarks3d.txt
-    .../
-  test/
-    <scan_name>/
-      <scan_name>_normalized.npz
-      landmarks3d.txt
-    .../
-```
-
-For each scan, there is one subdirectory with a unique `<scan_name>`,
-e.g. `170410-007-f-1moq-b682-low-res-result`.
-The files are:
-
-* `<scan_name>_normalized.npz`:
-  The ground-truth raw scan, `Y`, as a textured mesh.
-* `landmarks3d.txt`: 3D positions of detected body landmarks.
-
-See [formats](formats.md) for the mesh and landmark data formats.
 
 ## Evaluation data
 
@@ -58,14 +34,6 @@ Not provided:
    (They will be released after the competition.)
 2. Additional metadata.
 
-The data files are arranged in the following directory structure:
-
-```
-  eval/
-    <scan_name>/
-      <scan_name>_partial.npz
-    .../
-```
 
 ## Submission format
 
@@ -94,4 +62,39 @@ structure:
 where `<scan_name>` correponds to the name of the input scans.
 
 
+## Directory structure of the dataset
 
+The data files are arranged in the following directory structure:
+
+```
+  train/
+    <scan_name>/
+      <scan_name>_normalized.npz
+      landmarks3d.txt
+    .../
+  test/
+    <scan_name>/
+      <scan_name>_normalized.npz
+      landmarks3d.txt
+    .../
+  eval/
+    <scan_name>/
+      <scan_name>_normalized.npz
+      <scan_name>-partial-<xyz>.npz
+      landmarks3d.txt
+    .../
+```
+
+For each scan, there is one subdirectory with a unique `<scan_name>`,
+e.g. `170410-007-f-1moq-b682-low-res-result`.
+The files are:
+
+* `<scan_name>_normalized.npz` = `Y`:
+  The ground-truth raw scan, `Y`, as a textured mesh.
+* `<scan_name>-partial-<xyz>.npz` = `X`:
+  Partial scan generated from `Ys`.
+  `<xyz>` indicates the instance number if there are several partial scans
+  (i.e. `000`, `001`, `002`...).
+* `landmarks3d.txt`: 3D positions of detected body landmarks.
+
+See [formats](formats.md) for the mesh and landmark data formats.
