@@ -88,7 +88,7 @@ all | | | | | |
 ### Formats
 
 Meshes are in the `.npz` format.
-Landmark positions are in a custom tabular text format.
+Landmark positions are in a tabular text format.
 See [formats](formats.md).
 
 ### Orientation
