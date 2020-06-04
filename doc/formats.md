@@ -46,7 +46,9 @@ The following arrays inside the `.npz` define a mesh:
 
 Fields not described above should not be relied upon.
 
-The mesh can be loaded with `np.load`, for example:
+The mesh can be loaded with [`np.load`][np.load].
+
+For example:
 
 ```python
   import numpy as np
@@ -55,6 +57,8 @@ The mesh can be loaded with `np.load`, for example:
   mesh["faces"]
   # ...
 ```
+
+[np.load]: https://numpy.org/doc/stable/reference/generated/numpy.load.html
 
 ## Body landmarks
 
