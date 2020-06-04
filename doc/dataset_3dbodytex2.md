@@ -74,7 +74,7 @@ A | U | run | scape | free
 [img-pose-scape-1]: data/3dbodytex2-casual-scape032-small.png "pose-scape-032"
 [img-pose-scape-2]: data/3dbodytex2-casual-scape070-small.png "pose-scape-070"
 
-### Synthetic detailed ground-truth and simulated less-detailed acquisitions
+### Synthetic detailed ground-truth and simulated acquisitions
 
 The goal is to obtain a ground-truth shape with fine details (e.g. fingers and
 feet).
