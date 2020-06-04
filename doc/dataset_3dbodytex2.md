@@ -4,6 +4,7 @@
 It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 
 ![Sample scans from the 3DBodyTex 2 dataset](3dbodytex2.png)
+*Subset of 3DBodyTex 2.*
 
 ## Content
 
