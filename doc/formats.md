@@ -2,7 +2,7 @@
 
 ## Meshes
 
-The meshes of generic objects are stored in [.obj](#wavefront-obj-mesh).
+The meshes of generic objects are stored as [.obj](#wavefront-obj-mesh).
 
 The body scans are textured 3D meshes stored in [.npz](#npz-mesh) archives.
 
