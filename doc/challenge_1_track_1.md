@@ -55,7 +55,7 @@ structure:
 ```
   eval/
     <scan_name>/
-      completed.(npz|obj)
+      <scan_name>-completed.(npz|obj)
     .../
 ```
 

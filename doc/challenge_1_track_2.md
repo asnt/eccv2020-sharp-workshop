@@ -38,6 +38,31 @@ Not provided:
 2. Additional metadata.
 
 
+## Submission format
+
+The predicted complete mesh, `Y'`, should be in `.obj` or `.npz` (see
+[formats](formats.md)).
+
+The mesh colour information should be either:
+
+1. a single texture atlas,
+2. or RGB colour stored as vertex attributes.
+
+A mixture of vertex colour attribute and texture mapping is not allowed.
+
+The mesh geometry may be different than the input, `X`.
+
+The submission must be a `.zip` archive that unfolds in this directory
+structure:
+
+```
+  eval/
+    <scan_name>/
+      <scan_name>-completed.(npz|obj)
+    .../
+```
+
+
 ## Directory structure of the dataset
 
 The dataset has the following directory structure:
