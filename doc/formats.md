@@ -9,9 +9,9 @@ The body scans are textured 3D meshes stored in [.npz](#npz-mesh) archives.
 The texture is encoded as a
 [texture atlas](https://en.wikipedia.org/wiki/Texture_atlas).
 
-scan | texture atlas
-- | -
-![][texture-scan] | ![][texture]
+| scan              | texture atlas |
+| -                 | -             |
+| ![][texture-scan] | ![][texture]  |
 
 [texture-scan]: data/3dbodytex2-texture_atlas-scan-small.png
 [texture]: data/3dbodytex2-texture_atlas-small.png
