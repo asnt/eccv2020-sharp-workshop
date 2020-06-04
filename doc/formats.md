@@ -14,6 +14,9 @@ The body scans are textured 3D meshes stored in
 [numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez.html)
 archives.
 
+The texture is encoded as a
+[texture atlas](https://en.wikipedia.org/wiki/Texture_atlas).
+
 The following arrays inside the `.npz` define a mesh:
 
 * `vertices`, float (N, 3):
