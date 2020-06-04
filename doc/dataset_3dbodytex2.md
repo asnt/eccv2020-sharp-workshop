@@ -85,8 +85,10 @@ the fine-scale shape details.
 The procedure to synthesise the data is:
 
 1. `Y` = input: raw scan in close-fitting clothing,
-2. `Yf` = fit `Y`: fit the body model to `Y` and transfer the texture,
-3. `Ys` = acquire `Yf`: simulate the acquisition process on `Yf`.
+2. `Yf` = fit `Y`: fit the body model to `Y` and transfer the texture to obtain
+   `Yf`,
+3. `Ys` = acquire `Yf`: simulate the acquisition process on `Yf` to obtain
+   `Ys`.
 
 The pair `(Yf, Ys)` is a synthetic pair of `(acquired, ground-truth)` shape
 that can be used for supervision.
