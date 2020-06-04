@@ -48,7 +48,7 @@ It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 
 - The ground truth is `Yf`.
 - The partial scans are generated from `Ys`.
-- The 3D landmarks are provided at training only, not at evaluation time.
+- The 3D landmarks are provided at training time only, not at evaluation time.
 
 
 ## Detailed description and statistics
