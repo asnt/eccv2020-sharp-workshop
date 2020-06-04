@@ -74,6 +74,29 @@ A | U | run | scape | free
 [img-pose-scape-1]: data/3dbodytex2-casual-scape032-small.png "pose-scape-032"
 [img-pose-scape-2]: data/3dbodytex2-casual-scape070-small.png "pose-scape-070"
 
+### Synthetic detailed ground-truth and simulated less-detailed acquisitions
+
+The goal is to obtain a ground-truth shape with fine details (e.g. fingers and
+feet).
+This cannot be acquired systematically with a body scanner.
+The template mesh of a body model (SMPL-X) is used instead to ensure a
+consistent shape with fine details.
+
+The SMPL-X body model is fitted to the raw scans in close-fitting clothing,
+`Y`,
+to obtain synthetic ground-truth textured shapes, `Yf`,
+with fine details (fingers...).
+The scanning process is simulated in software to obtain synthetic scans, `Ys`,
+where the shape is less detailed.
+
+scan (`Y`) | fitted (`Yf`) | simulated acquisition (`Ys`)
+-|-|-
+![fitness][img-synthetic-scan] | ![fitted][img-synthetic-fitted] | ![simulated][img-synthetic-simulated]
+
+[img-synthetic-scan]: data/3dbodytex2-synthetic-scan-small.png "scan"
+[img-synthetic-fitted]: data/3dbodytex2-synthetic-fitted-small.png "fitted"
+[img-synthetic-simulated]: data/3dbodytex2-synthetic-simulated-small.png "simulated acquisition"
+
 ### Number of scans for different types of clothing and pose
 
 clothing\pose | all | A | U | run | scape | free
