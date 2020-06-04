@@ -90,9 +90,10 @@ e.g. `170410-007-f-1moq-b682-low-res-result`.
 The files are:
 
 * `<scan_name>_normalized.npz` = `Y`:
-  The ground-truth raw scan, `Y`, as a textured mesh.
+  The ground-truth mesh.
+  (The raw scan.)
 * `<scan_name>-partial.npz` = `X`:
-  Partial scan generated from `Ys`.
+  Partial scan generated from `Y`.
 * `landmarks3d.txt`: 3D positions of detected body landmarks.
 
 See [formats](formats.md) for the mesh and landmark data formats.
