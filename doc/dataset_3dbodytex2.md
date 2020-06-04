@@ -59,6 +59,23 @@ casual | | | | | |
 all | | | | | |
 
 
+## Encoding formats and conventions
+
+### Formats
+
+See [formats](formats.md) for the mesh and landmark file formats.
+
+### Orientation
+
+The up direction is the y axis.
+The ground is the x-z plane.
+Most scans are facing the -z direction, but not all.
+
+### Units
+
+Vertex positions are in metres.
+
+
 ## 3D body landmarks
 
 67 body landmarks are detected automatically on each scan.
