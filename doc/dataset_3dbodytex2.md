@@ -63,7 +63,9 @@ all | | | | | |
 
 ### Formats
 
-See [formats](formats.md) for the mesh and landmark file formats.
+Meshes are in the `.npz` format.
+Landmark positions are in a custom tabular text format.
+See [formats](formats.md).
 
 ### Orientation
 
