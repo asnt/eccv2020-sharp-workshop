@@ -47,7 +47,6 @@ The following arrays inside the `.npz` define a mesh:
 Fields not described above should not be relied upon.
 
 The mesh can be loaded with [`numpy.load`][np.load].
-
 For example:
 
 ```python
