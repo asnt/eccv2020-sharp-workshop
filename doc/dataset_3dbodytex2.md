@@ -88,7 +88,7 @@ ears...).
 The detection of most landmarks is stable except for the finger joints and
 finger tips.
 
-Notation below:
+The landmark names are listed below with the following notation:
 
 - `<side>` is `left` or `right`,
 - `<knuckle>` is one of `base`, `middle`, `top`, `tip`.
