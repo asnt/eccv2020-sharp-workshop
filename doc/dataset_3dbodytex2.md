@@ -48,9 +48,31 @@ It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
 - The 3D landmarks are provided at training only, not at evaluation time.
 
 
-## Statistics
+## Detailed description and statistics
 
-Number of scans for different types of clothing and pose:
+### Clothing
+
+casual | fitness
+-|-
+![casual][img-casual] | ![fitness][img-fitness]
+
+[img-casual]: data/3dbodytex2-casual-a-small.png "casual"
+[img-fitness]: data/3dbodytex2-fitness-a-small.png "fitness"
+
+### Poses
+
+A | U | run | scape | free
+-|-|-|-|-
+![][img-pose-a] | ![][img-pose-u] | ![][img-pose-run] | ![][img-pose-scape-0] ![][img-pose-scape-1] ![][img-pose-scape-2] ... | unconstrained
+
+[img-pose-a]: data/3dbodytex2-casual-a-small.png "pose-a"
+[img-pose-u]: data/3dbodytex2-casual-u-small.png "pose-u"
+[img-pose-run]: data/3dbodytex2-casual-run-small.png "pose-run"
+[img-pose-scape-0]: data/3dbodytex2-casual-scape003-small.png "pose-scape-003"
+[img-pose-scape-1]: data/3dbodytex2-casual-scape032-small.png "pose-scape-032"
+[img-pose-scape-2]: data/3dbodytex2-casual-scape070-small.png "pose-scape-070"
+
+### Number of scans for different types of clothing and pose
 
 clothing\pose | all | U | A | run | scape | free
 -|-|-|-|-|-|-
