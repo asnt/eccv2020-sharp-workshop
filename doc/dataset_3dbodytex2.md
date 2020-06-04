@@ -76,11 +76,11 @@ A | U | run | scape | free
 
 ### Synthetic detailed ground-truth and simulated acquisitions
 
-The goal is to obtain a ground-truth shape with fine details (e.g. fingers and
-feet).
+The goal is to obtain a ground-truth shape preserving the details of
+smaller-scale regions (e.g. fingers and feet).
 This cannot be acquired systematically with a body scanner.
-The template mesh of a body model (SMPL-X) is used instead to ensure a
-consistent shape with fine details.
+Instead, the template mesh of a body model (SMPL-X) is fitted to the scans, to
+approximate the real shapes while preserving the details of fine-scale regions.
 
 The SMPL-X body model is fitted to the raw scans in close-fitting clothing,
 `Y`,
