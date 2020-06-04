@@ -16,9 +16,10 @@ This is a *completion task* of 3D shape and texture.
 The data consists in pairs `(X, Y)` generated from two
 [datasets](doc/datasets.md) of 3D textured scans:
 
-1. 3DBodyTex-2: a dataset of 3D human scans (extending
-   [3DBodyTex](https://cvi2.uni.lu/datasets/)).
-2. 3DObjectTex: a dataset of 3D scans of generic objects.
+1. [3DBodyTex 2](doc/dataset_3dbodytex2.md): a dataset of 3D human scans
+   (extending [3DBodyTex](https://cvi2.uni.lu/datasets/)).
+2. [3DObjectTex](doc/dataset_3dobjecttex.md): a dataset of 3D scans of generic
+   objects.
 
 There are two challenges, one per dataset.
 
