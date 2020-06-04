@@ -105,7 +105,7 @@ Vertex positions are in metres.
 ## 3D body landmarks
 
 There are 67 body landmarks detected automatically on each scan.
-They are provided to generate the partial data but can also be used for
+They are provided to generate the partial data but may also be used for
 training.
 They comprise standard body joints and other keypoints on the body (eyes, nose,
 ears...).
