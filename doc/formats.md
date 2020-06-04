@@ -2,20 +2,30 @@
 
 ## Meshes
 
-### Wavefront OBJ mesh
+The meshes of generic objects are stored in [.obj](#wavefront-obj-mesh).
 
-The meshes of generic objects are stored in
-[Wavefront `.obj`](https://en.wikipedia.org/wiki/Wavefront_.obj_file).
-
-### Npz mesh
-
-The body scans are textured 3D meshes stored in
-[(compressed)](https://numpy.org/doc/stable/reference/generated/numpy.savez_compressed.html)
-[numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez.html)
-archives.
+The body scans are textured 3D meshes stored in [.npz](#npz-mesh) archives.
 
 The texture is encoded as a
 [texture atlas](https://en.wikipedia.org/wiki/Texture_atlas).
+
+scan | texture atlas
+- | -
+![][texture-scan] | ![][texture]
+
+[texture-scan]: data/3dbodytex2-texture_atlas-scan-small.png
+[texture]: data/3dbodytex2-texture_atlas-small.png
+
+### Wavefront OBJ mesh
+
+See [Wavefront `.obj`](https://en.wikipedia.org/wiki/Wavefront_.obj_file).
+
+### Npz mesh
+
+This format stores the numpy arrays defining the mesh inside a
+[(compressed)](https://numpy.org/doc/stable/reference/generated/numpy.savez_compressed.html)
+[numpy `.npz`](https://numpy.org/doc/stable/reference/generated/numpy.savez.html)
+archive.
 
 The following arrays inside the `.npz` define a mesh:
 
