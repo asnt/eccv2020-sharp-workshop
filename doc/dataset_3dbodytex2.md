@@ -18,7 +18,8 @@ It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
   - body joints and landmark points on the surface,
   - estimated automatically;
 - Fitted textured SMPL-X model (`Yf`):
-  - SMPL-X is fitted to all the raw scans `Y` to obtain `Yf`,
+  - SMPL-X is fitted to all the raw scans `Y` with close-fitting clothing to
+    obtain `Yf`,
   - pose and shape parameters,
   - fixed template mesh (SMPL-X),
   - texture mapped from the raw scans;
@@ -28,7 +29,8 @@ It is an extension of [3DBodyTex](https://cvi2.uni.lu/datasets/).
     `Ys`;
 - Synthetic pairs `(Yf, Ys)` of `(detailed ground truth, acquisition)`:
   - `Yf` is a synthetic groud truth with detailed shape and texture,
-  - `Ys` is a synthetic scan acquisition with typical artefacts.
+  - `Ys` is a synthetic scan acquisition with typical artefacts,
+  - for scans with close-fitting clothing only.
 
 [shapify booth]: https://www.artec3d.com/portable-3d-scanners/shapifybooth
 
