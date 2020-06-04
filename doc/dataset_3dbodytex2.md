@@ -79,15 +79,17 @@ A | U | run | scape | free
 The goal is to obtain a ground-truth shape preserving the details of
 smaller-scale regions (e.g. fingers and feet).
 This cannot be acquired systematically with a body scanner.
-Instead, the template mesh of a body model (SMPL-X) is fitted to the scans, to
-approximate the real shapes while preserving the details of fine-scale regions.
+Instead, the template mesh of a body model (SMPL-X) is used as a reference for
+the fine-scale shape details.
 
-The SMPL-X body model is fitted to the raw scans in close-fitting clothing,
-`Y`,
-to obtain synthetic ground-truth textured shapes, `Yf`,
-with fine details (fingers...).
-The scanning process is simulated in software to obtain synthetic scans, `Ys`,
-where the shape is less detailed.
+The procedure to synthesise the data is:
+
+1. `Y` = input: raw scan in close-fitting clothing,
+2. `Yf` = fit `Y`: fit the body model to `Y` and transfer the texture,
+3. `Ys` = acquire `Yf`: simulate the acquisition process on `Yf`.
+
+The pair `(Yf, Ys)` is a synthetic pair of `(acquired, ground-truth)` shape
+that can be used for supervision.
 
 scan (`Y`) | fitted (`Yf`) | simulated acquisition (`Ys`)
 -|-|-
