@@ -74,7 +74,7 @@ A | U | run | scape | free
 
 ### Number of scans for different types of clothing and pose
 
-clothing\pose | all | U | A | run | scape | free
+clothing\pose | all | A | U | run | scape | free
 -|-|-|-|-|-|-
 fitness | | | | | |
 casual | | | | | |
