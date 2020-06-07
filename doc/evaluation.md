@@ -17,9 +17,9 @@ to the ground truth, `Y`, with a surface-to-surface distance:
 \text{completeness}(Y') = d(Y, Y') = \sum_{y \in Y} d(y, Y')
 ```
 
-The surface-to-surface distance $`d(A, B)`$ is approximated in practice by
-sampling points on $`A`$ and projecting them on $`B`$ by intersecting the normal
-direction from a point of $`A`$ with $`B`$.
+The directed surface-to-surface distance $`d(A, B)`$ is approximated in
+practice by sampling points on $`A`$ and projecting them on $`B`$ by
+intersecting the normal direction from a point of $`A`$ with $`B`$.
 
 
 ## References
