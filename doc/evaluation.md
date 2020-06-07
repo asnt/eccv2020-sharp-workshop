@@ -18,8 +18,8 @@ to the ground truth, `Y`, with a surface-to-surface distance:
 ```
 
 The surface-to-surface distance $`d(A, B)`$ is approximated in practice by
-sampling points on $A$ and projecting them on $B$ by intersecting the normal
-direction from a point of $A$ with $B$.
+sampling points on $`A`$ and projecting them on $`B`$ by intersecting the normal
+direction from a point of $`A`$ with $`B`$.
 
 
 ## References
