@@ -6,20 +6,20 @@ Notation:
 - `Y`: the ground truth complete shape,
 - `Y'`: the estimated complete shape.
 
-The quality of the estimation, `Y'`, is evaluated quantitatively with respect
+The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, `Y`, with a surface-to-surface distance:
 
 ```math
-\text{accuracy}(Y') = d(Y', Y) = \sum_{y' \in Y'} d(y', Y)
+\text{accuracy}(Y') = \sum_{y' \in Y'} d(y', Y)
 ```
 
 ```math
-\text{completeness}(Y') = d(Y, Y') = \sum_{y \in Y} d(y, Y')
+\text{completeness}(Y') = \sum_{y \in Y} d(y, Y')
 ```
 
-The directed surface-to-surface distance $`d(A, B)`$ is approximated in
-practice by sampling points on $`A`$ and projecting them on $`B`$ by
-intersecting the normal direction from a point of $`A`$ with $`B`$.
+The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
+approximated in practice by sampling points on $`A`$ and projecting them on
+$`B`$ by intersecting the normal direction from a point of $`A`$ with $`B`$.
 
 
 ## References
