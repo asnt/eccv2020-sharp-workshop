@@ -33,10 +33,10 @@ $`B`$ along the normal directions.
 
 The shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
-$`d(y', Y) = d_{text{shape}}(y', Y),`$
+$`d(y', Y) = d_{shape}(y', Y),`$
 operates on the 3D positions directly.
 For the texture error, the distance,
-$`d(y', Y) = d_{text{texture}}(y', Y),`$
+$`d(y', Y) = d_{texture}(y', Y),`$
 operates on the interpolated texture values at the source and target 3D
 positions.
 
