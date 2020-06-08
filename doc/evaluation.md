@@ -15,13 +15,13 @@ to the ground truth, `Y`, with a surface-to-surface distance:
 d(Y', Y) = \frac{1}{2} (\text{accuracy}_Y(Y') + \text{completeness}_Y(Y'))
 ```
 
-where accuracy is the directed distance from estimation to reference,
+where accuracy is the directed distance from the estimation to the reference,
 
 ```math
 \text{accuracy}_Y(Y') = \sum_{y' \in Y'} d(y', Y),
 ```
 
-and completeness is the directed distance from reference to estimation,
+and completeness is the directed distance from the reference to the estimation,
 
 ```math
 \text{completeness}_Y(Y') = \sum_{y \in Y} d(y, Y').
