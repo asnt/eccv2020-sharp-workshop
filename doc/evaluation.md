@@ -29,7 +29,7 @@ and completeness is the directed distance from reference to estimation,
 
 The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and projecting them on
-$`B`$ by intersecting the normal direction from a point of $`A`$ with $`B`$.
+$`B`$ along the normal directions.
 
 The shape and texture reconstruction errors are measured separately.
 For the shape error, the distance $`d(y', Y)`$ is operating on the 3D positions
