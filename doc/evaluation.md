@@ -12,19 +12,19 @@ The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, `Y`, with a surface-to-surface distance:
 
 ```math
-d(Y', Y) = \frac{1}{2} (\text{accuracy}(Y') + \text{completeness}(Y'))
+d(Y', Y) = \frac{1}{2} (\text{accuracy}_Y(Y') + \text{completeness}_Y(Y'))
 ```
 
 where accuracy is the directed distance from estimation to reference,
 
 ```math
-\text{accuracy}(Y') = \sum_{y' \in Y'} d(y', Y),
+\text{accuracy}_Y(Y') = \sum_{y' \in Y'} d(y', Y),
 ```
 
 and completeness is the directed distance from reference to estimation,
 
 ```math
-\text{completeness}(Y') = \sum_{y \in Y} d(y, Y').
+\text{completeness}_Y(Y') = \sum_{y \in Y} d(y, Y').
 ```
 
 The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
