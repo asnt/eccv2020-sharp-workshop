@@ -32,10 +32,13 @@ approximated in practice by sampling points on $`A`$ and projecting them on
 $`B`$ along the normal directions.
 
 The shape and texture reconstruction errors are measured separately.
-For the shape error, the distance $`d(y', Y)`$ is operating on the 3D positions
-directly.
-For the texture error, the distance $`d(y', Y)`$ is operating on the
-interpolated texture values at the source and target 3D positions.
+For the shape error, the distance,
+$`d(y', Y) = d_{text{shape}}(y', Y),`$
+operates on the 3D positions directly.
+For the texture error, the distance,
+$`d(y', Y) = d_{text{texture}}(y', Y),`$
+operates on the interpolated texture values at the source and target 3D
+positions.
 
 
 ## Qualitative
