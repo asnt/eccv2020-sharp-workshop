@@ -37,8 +37,9 @@ Not provided:
 
 ## Evaluation
 
-The estimation `Y'` is evaluated quantitatively on the shape and the texture
-with respect to the ground truth `Y` (see [evaluation](evaluation.md)).
+The quality of the estimation `Y'` is a global measure of the shape and the
+texture error with respect to the ground truth `Y`
+(see [evaluation](evaluation.md)).
 
 The evaluation is performed on the whole body except the head and the hands,
 where the reference is blurred or less reliable.
