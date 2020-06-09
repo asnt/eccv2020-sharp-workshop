@@ -4,7 +4,6 @@
 
 Notation:
 
-- `X`: the partial shape,
 - `Y`: the ground truth complete shape,
 - `Y'`: the estimated complete shape.
 
