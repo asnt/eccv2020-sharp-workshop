@@ -37,7 +37,7 @@ Not provided:
 
 ## Evaluation
 
-The evaluation considers the reconstruction quality of the
+The evaluation is based on the reconstruction quality of the
 
 1. the shape
 2. and the texture.
