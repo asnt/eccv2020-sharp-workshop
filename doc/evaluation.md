@@ -41,9 +41,6 @@ operates on the interpolated texture values at the source and target 3D
 positions.
 
 
-## Qualitative
-
-
 ## References
 
 - Jensen, Rasmus, et al.
