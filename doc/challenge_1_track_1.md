@@ -35,6 +35,18 @@ Not provided:
 2. Additional metadata.
 
 
+## Evaluation
+
+The estimation `Y'` is evaluated quantitatively on the shape and the texture
+with respect to the ground truth `Y` (see [evaluation](evaluation.md)).
+
+The evaluation is performed on the whole body except the head and the hands,
+where the reference is blurred or less reliable.
+
+The regions of the head and hands are identified automatically from the
+corresponding segmentation on the ground-truth data (not shared).
+
+
 ## Submission format
 
 The predicted complete mesh, `Y'`, should be in `.obj` or `.npz` (see
