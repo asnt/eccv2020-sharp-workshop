@@ -37,10 +37,14 @@ Not provided:
 
 ## Evaluation
 
-The evaluation is based on the reconstruction quality of the
+Considered for the evaluation:
 
-1. the shape
-2. and the texture.
+- the shape,
+- the texture,
+
+Not considered for the evaluation:
+
+- the head and the hands.
 
 See [evaluation](evaluation.md) for the definition of the metric.
 
