@@ -41,7 +41,7 @@ operates on the interpolated texture values at the source and target 3D
 positions.
 
 
-## Challenge-specific modalities
+## Challenge-specific criteria
 
 | challenge(/track) | shape | texture | note                      |
 | -                 | -     | -       | -                         |
