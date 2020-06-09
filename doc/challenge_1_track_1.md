@@ -37,7 +37,7 @@ Not provided:
 
 ## Evaluation
 
-The quality of the estimation `Y'` is measure of the shape and the texture
+The quality of the estimation `Y'` is a measure of the shape and the texture
 error with respect to the ground truth `Y`
 (see [evaluation](evaluation.md)).
 
