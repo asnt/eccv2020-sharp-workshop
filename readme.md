@@ -41,8 +41,8 @@ participants.
 The corresponding ground-truth shapes, `Y`, are kept secret until the end of
 the competition.
 
-The submissions are evaluated quantitatively by computing the point-to-surface
-or surface-to-surface distance from `Y` to `X`.
+The submissions are evaluated quantitatively by computing the
+surface-to-surface distance from `Y` to `X`.
 
 ## Detailed instructions
 
