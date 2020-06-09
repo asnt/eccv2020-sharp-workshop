@@ -38,6 +38,17 @@ Not provided:
 2. Additional metadata.
 
 
+## Evaluation
+
+The evaluation is based on the reconstruction quality of the *the shape only*.
+
+See [evaluation](evaluation.md) for the definition of the metric.
+
+The evaluation is performed on the ears, the hands and the feet (areas with
+fine details).
+The rest of the body is ignored.
+
+
 ## Submission format
 
 The predicted complete mesh, `Y'`, should be in `.obj` or `.npz` (see
