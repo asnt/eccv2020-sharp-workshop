@@ -29,6 +29,16 @@ Not provided:
    (They will be released after the competition.)
 
 
+## Evaluation
+
+Considered for the evaluation:
+
+- the shape,
+- the texture.
+
+See [evaluation](evaluation.md) for the definition of the metric.
+
+
 ## Submission format
 
 The predicted complete mesh, `Y'`, should be in `.obj` or `.npz` (see
