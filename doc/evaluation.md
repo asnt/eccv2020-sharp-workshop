@@ -41,6 +41,15 @@ operates on the interpolated texture values at the source and target 3D
 positions.
 
 
+## Challenge-specific modalities
+
+challenge(/track) | shape | texture | note
+- | - | - | -
+1/1 | Yes | Yes | hands and head ignored
+1/2 | Yes | No | only hands, feet and ears
+2 | Yes | Yes | -
+
+
 ## References
 
 - Jensen, Rasmus, et al.
