@@ -43,11 +43,11 @@ positions.
 
 ## Challenge-specific modalities
 
-challenge(/track) | shape | texture | note
-- | - | - | -
-1/1 | Yes | Yes | hands and head ignored
-1/2 | Yes | No | only hands, feet and ears
-2 | Yes | Yes | -
+| challenge(/track) | shape | texture | note                      |
+| -                 | -     | -       | -                         |
+| 1/1               | Yes   | Yes     | hands and head ignored    |
+| 1/2               | Yes   | No      | only hands, feet and ears |
+| 2                 | Yes   | Yes     | -                         |
 
 
 ## References
