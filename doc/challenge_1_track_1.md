@@ -37,12 +37,12 @@ Not provided:
 
 ## Evaluation
 
-The quality of the estimation `Y'` is a global measure of the shape and the
-texture error with respect to the ground truth `Y`
+The quality of the estimation `Y'` is measure of the shape and the texture
+error with respect to the ground truth `Y`
 (see [evaluation](evaluation.md)).
 
-The evaluation is performed on the whole body except the head and the hands,
-where the reference is blurred or less reliable.
+The evaluation is performed on the whole body (even on the non-completed parts)
+except the head and the hands, where the reference is blurred or less reliable.
 
 The regions of the head and hands are identified automatically from the
 corresponding segmentation on the ground-truth data (not shared).
