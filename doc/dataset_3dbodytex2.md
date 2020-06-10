@@ -132,10 +132,7 @@ ears...).
 The detection of most landmarks is stable except for the finger joints and
 finger tips.
 
-The landmark names are listed below with the following notation:
-
-- `<side>` is `left` or `right`,
-- `<knuckle>` is one of `base`, `middle`, `top`, `tip`.
+Below, `<side>` is either `left` or `right`.
 
 ### Body joints (20)
 
@@ -162,6 +159,8 @@ The landmark names are listed below with the following notation:
 | nose          |
 
 ### Finger joints and tips (42)
+
+`<knuckle>` is one of `base`, `middle`, `top`, `tip`.
 
 | landmark name                    |
 | -                                |
