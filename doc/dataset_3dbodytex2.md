@@ -113,7 +113,7 @@ all | | | | | |
 
 ## Encoding formats and conventions
 
-### Formats
+### File formats
 
 Meshes are in the `.npz` format.
 Landmark positions are in a tabular text format.

@@ -4,7 +4,7 @@
 
 ## Encoding formats and conventions
 
-### Formats
+### File formats
 
 Meshes are in the `.obj` format.
 See [formats](formats.md).
