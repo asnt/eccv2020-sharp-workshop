@@ -39,9 +39,10 @@ Custom routines may be used if reported.
 For *evaluation*, a set of partial shapes, `X`, is provided to the
 participants.
 The corresponding ground-truth shapes, `Y`, are kept secret.
-
+The participants estimate a complete shape, `Y'`, from `X`.
 The submissions are evaluated quantitatively by computing the
-surface-to-surface distance from `Y` to `X`.
+surface-to-surface distance between `Y` and `Y'`.
+
 
 ## Detailed instructions
 
