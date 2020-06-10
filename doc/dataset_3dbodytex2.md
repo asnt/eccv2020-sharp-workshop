@@ -102,14 +102,6 @@ scan (`Y`) | fitted (`Yf`) | simulated acquisition (`Ys`)
 [img-synthetic-fitted]: data/3dbodytex2-synthetic-fitted-small.png "fitted"
 [img-synthetic-simulated]: data/3dbodytex2-synthetic-simulated-small.png "simulated acquisition"
 
-### Number of scans for different types of clothing and pose
-
-clothing\pose | all | A | U | run | scape | free
--|-|-|-|-|-|-
-fitness | | | | | |
-casual | | | | | |
-all | | | | | |
-
 
 ## Encoding formats and conventions
 
