@@ -55,6 +55,8 @@ See [evaluation](evaluation.md) for the definition of the metric.
 The evaluation is performed on the ears, the hands and the feet (areas with
 fine details).
 The rest of the body is ignored.
+The hand region starts at the wrist.
+The foot region starts at the ankle.
 
 The texture is ignored as it is less reliable on the areas with fine details on
 the synthetic data.
