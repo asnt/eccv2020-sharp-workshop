@@ -38,8 +38,7 @@ Custom routines may be used if reported.
 
 For *evaluation*, a set of partial shapes, `X`, is provided to the
 participants.
-The corresponding ground-truth shapes, `Y`, are kept secret until the end of
-the competition.
+The corresponding ground-truth shapes, `Y`, are kept secret.
 
 The submissions are evaluated quantitatively by computing the
 surface-to-surface distance from `Y` to `X`.
