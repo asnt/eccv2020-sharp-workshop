@@ -1,5 +1,11 @@
 # Changlog
 
+## [unreleased] - yyy-mm-dd
+
+### Fixed
+
+- Various bugs in the method for shooting holes.
+
 ## [1.2.0] - 2020-06-10
 
 ### Changed
