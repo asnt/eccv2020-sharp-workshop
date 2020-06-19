@@ -96,7 +96,7 @@ def estimate_plane(A, B, C):
 
 def shoot_holes(vertices, n_holes_range=(3, 10), dropout_range=(0.01, 0.05),
                 random_state=None):
-    """
+    """Generate a partial shape by cutting holes of random location and size.
 
     Returns:
         array of indices of points to crop
