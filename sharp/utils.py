@@ -104,10 +104,9 @@ def shoot_holes(vertices, num_holes_range=(3, 10), dropout_range=(0.01, 0.05), r
     points = vertices[point_indices]
     points_to_remove = set()
 
+    hole_size_range = n * np.asarray(dropout_range)
     for p in points:
-        #randomize number of points in each center neighborhood to remove
-        n_rm_pts = int(np.random.randint(np.dot(dropout_range, n), size=1))
-        points_to_remove.update(np.unique(kdtree.query(p, k=n_rm_pts)[1])
-        points_to_remove.update(np.unique(kdtree.query(p, k=n_rm_pts)[1]))
+        hole_size = np.random.randint(*hole_size_range)
+        points_to_remove.update(np.unique(kdtree.query(p, k=hole_size)[1]))
 
     return np.asarray(list(points_to_remove))
