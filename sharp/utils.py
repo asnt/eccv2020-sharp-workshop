@@ -94,19 +94,29 @@ def estimate_plane(A, B, C):
     return c, n
 
 
-def shoot_holes(vertices, num_holes_range=(3, 10), dropout_range=(0.01, 0.05), random_state=None):
+def shoot_holes(vertices, n_holes_range=(3, 10), dropout_range=(0.01, 0.05),
+                random_state=None):
+    """
+
+    Returns:
+        array of indices of points to crop
+    """
     n = vertices.shape[0]
     kdtree = cKDTree(vertices, leafsize=200)
     sampler = random_state and random_state.choice or np.random.choice
 
-    #select point centers for holes
-    point_indices = sampler(len(vertices), size=np.random.randint(num_holes_range[0], num_holes_range[1]))
-    points = vertices[point_indices]
-    points_to_remove = set()
+    # Select random hole centers.
+    n_holes = np.random.randint(*n_holes_range)
+    center_indices = sampler(len(vertices), size=n_holes)
+    centers = vertices[center_indices]
 
+    # Crop holes of random size around the centers.
+    to_crop = []
     hole_size_range = n * np.asarray(dropout_range)
-    for p in points:
+    for center in centers:
         hole_size = np.random.randint(*hole_size_range)
-        points_to_remove.update(np.unique(kdtree.query(p, k=hole_size)[1]))
+        _, indices = kdtree.query(center, k=hole_size)
+        to_crop.append(indices)
+    to_crop = np.unique(np.concatenate(to_crop))
 
-    return np.asarray(list(points_to_remove))
+    return to_crop
