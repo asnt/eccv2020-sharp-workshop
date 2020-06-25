@@ -4,7 +4,9 @@
 
 ### Fixed
 
+- Support saving a mesh as .npz without texture information.
 - Various bugs in the method for shooting holes.
+
 
 ## [1.2.0] - 2020-06-10
 
