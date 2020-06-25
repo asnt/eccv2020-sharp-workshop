@@ -1,6 +1,6 @@
 # Changlog
 
-## [unreleased] - yyy-mm-dd
+## [unreleased] - yyyy-mm-dd
 
 ### Fixed
 
