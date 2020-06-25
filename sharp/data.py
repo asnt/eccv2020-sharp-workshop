@@ -261,7 +261,7 @@ def load_obj(path):
             normals=normals if len(normals) > 0 else None,
             texcoords=texcoords if len(texcoords) > 0 else None,
             texture=texture,
-            texture_indices=texture_indices,
+            texture_indices=texture_indices if len(texture_indices) else None,
             material=material_name,
         )
 
