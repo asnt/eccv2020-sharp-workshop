@@ -344,6 +344,12 @@ Ns 1000
             f.write(u'\n')
 
 
+def astype_or_none(array, type_):
+    if array is None:
+        return None
+    return array.astype(type_)
+
+
 def load_npz(path):
     data = np.load(path)
 
@@ -365,7 +371,9 @@ def save_npz(path, mesh):
         path,
         vertices=mesh.vertices.astype("float32"),
         faces=mesh.faces.astype("uint32"),
-        texcoords=mesh.texcoords.astype("float32"),
-        texcoords_indices=mesh.texture_indices.astype("uint32"),
-        texture=(255 * mesh.texture).astype("uint8"),
+        texcoords=astype_or_none(mesh.texcoords, "float32"),
+        texcoords_indices=astype_or_none(mesh.texture_indices, "uint32"),
+        texture=((255 * mesh.texture).astype("uint8")
+                 if mesh.texture is not None
+                 else None),
     )
