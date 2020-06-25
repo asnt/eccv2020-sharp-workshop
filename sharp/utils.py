@@ -1,4 +1,5 @@
 import copy
+import numbers
 
 import cv2
 import numpy as np
@@ -94,31 +95,37 @@ def estimate_plane(A, B, C):
     return c, n
 
 
-def shoot_holes(vertices, n_holes_range=(3, 10), dropout_range=(0.01, 0.05),
+def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2),
                 random_state=None):
     """Generate a partial shape by cutting holes of random location and size.
 
+    Args:
+        vertices: The vertices of the mesh.
+        n_holes: int or (low, high), number of holes to shot, or bounds from
+            which to randomly draw the number of holes.
+        dropout: int or (low, high), proportion of points to remove in a single
+            hole, or bounds from which to randomly draw the proportion.
+
     Returns:
-        array of indices of points to crop
+        Array of indices of the points to remove.
     """
     n = vertices.shape[0]
     kdtree = cKDTree(vertices, leafsize=200)
     sampler = random_state and random_state.choice or np.random.choice
 
-    if n_holes_range[0] == n_holes_range[1]:
-        n_holes = n_holes_range[0]
-    else:
-        n_holes = np.random.randint(*n_holes_range)
+    if not isinstance(n_holes, numbers.Integral):
+        n_holes = np.random.randint(*n_holes)
 
     # Select random hole centers.
     center_indices = sampler(len(vertices), size=n_holes)
     centers = vertices[center_indices]
 
-    hole_size_range = n * np.asarray(dropout_range)
-    if dropout_range[0] == dropout_range[1]:
-        hole_sizes = [hole_size_range[0]] * n_holes
+    if isinstance(dropout, numbers.Number):
+        hole_size = n * dropout
+        hole_sizes = [hole_size] * n_holes
     else:
-        hole_sizes = np.random.randint(*hole_size_range, size=n_holes)
+        hole_size_bounds = n * np.asarray(dropout)
+        hole_sizes = np.random.randint(*hole_size_bounds, size=n_holes)
 
     # Crop holes of random size around the centers.
     to_crop = []

@@ -13,17 +13,11 @@ def _do_convert(args):
 
 def _do_shoot(args):
     mesh = data.load_mesh(str(args.input))
-    if args.holes is not None:
-        holes_range = args.holes, args.holes
-    else:
-        holes_range = args.min_holes, args.max_holes
-    if args.dropout is not None:
-        dropout_range = args.dropout, args.dropout
-    else:
-        dropout_range = args.min_dropout, args.max_dropout
-    point_indices = utils.shoot_holes(mesh.vertices,
-                                      holes_range,
-                                      dropout_range)
+    n_holes = (args.holes if args.holes is not None
+               else (args.min_holes, args.max_holes))
+    dropout = (args.dropout if args.dropout is not None
+               else (args.min_dropout, args.max_dropout))
+    point_indices = utils.shoot_holes(mesh.vertices, n_holes, dropout)
     shot = utils.remove_points(mesh, point_indices)
     shot.save(str(args.output))
 
