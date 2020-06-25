@@ -2,6 +2,10 @@
 
 ## [unreleased] - yyyy-mm-dd
 
+### Changed
+
+- Set entry point for the CLI at the top level of the module.
+
 ### Fixed
 
 - Support saving a mesh as .npz without texture information.
