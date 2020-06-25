@@ -3,11 +3,29 @@ import pathlib
 import sys
 
 from . import data
+from . import utils
 
 
 def _do_convert(args):
     mesh = data.load_mesh(args.input)
     data.save_mesh(args.output, mesh)
+
+
+def _do_shoot(args):
+    mesh = data.load_mesh(str(args.input))
+    if args.holes is not None:
+        holes_range = args.holes, args.holes
+    else:
+        holes_range = args.min_holes, args.max_holes
+    if args.dropout is not None:
+        dropout_range = args.dropout, args.dropout
+    else:
+        dropout_range = args.min_dropout, args.max_dropout
+    point_indices = utils.shoot_holes(mesh.vertices,
+                                      holes_range,
+                                      dropout_range)
+    shot = utils.remove_points(mesh, point_indices)
+    shot.save(str(args.output))
 
 
 def _parse_args():
@@ -19,6 +37,41 @@ def _parse_args():
     parser_convert.add_argument("input", type=pathlib.Path)
     parser_convert.add_argument("output", type=pathlib.Path)
     parser_convert.set_defaults(func=_do_convert)
+
+    parser_shoot = subparsers.add_parser(
+        "shoot", help="generate partial data with the shooting method")
+    parser_shoot.add_argument("input", type=pathlib.Path)
+    parser_shoot.add_argument("output", type=pathlib.Path)
+    parser_shoot.add_argument(
+        "--holes", type=int, default=None,
+        help="If not None, fixed number of holes to shoot, otherwise a random"
+             " number between min_holes and max_holes is used.",
+    )
+    parser_shoot.add_argument(
+        "--min-holes", type=int, default=3,
+        help="Minimum number of holes to generate (default: 3).",
+    )
+    parser_shoot.add_argument(
+        "--max-holes", type=int, default=10,
+        help="Maximum number of holes to generate (default: 10).",
+    )
+    parser_shoot.add_argument(
+        "--dropout", type=float, default=None,
+        help="If not None, fixed proportion of points to remove in a single"
+             " hole, otherwise a random proportion between min_dropout and"
+             " max_dropout is used.",
+    )
+    parser_shoot.add_argument(
+        "--min-dropout", type=float, default=0.01,
+        help="minimum proportion of points to remove in a single hole"
+             " (default: 0.01)",
+    )
+    parser_shoot.add_argument(
+        "--max-dropout", type=float, default=0.05,
+        help="maximum proportion of points to remove in a single hole"
+             " (default: 0.05)",
+    )
+    parser_shoot.set_defaults(func=_do_shoot)
 
     args = parser.parse_args()
 
