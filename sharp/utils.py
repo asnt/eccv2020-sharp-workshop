@@ -105,17 +105,25 @@ def shoot_holes(vertices, n_holes_range=(3, 10), dropout_range=(0.01, 0.05),
     kdtree = cKDTree(vertices, leafsize=200)
     sampler = random_state and random_state.choice or np.random.choice
 
+    if n_holes_range[0] == n_holes_range[1]:
+        n_holes = n_holes_range[0]
+    else:
+        n_holes = np.random.randint(*n_holes_range)
+
     # Select random hole centers.
-    n_holes = np.random.randint(*n_holes_range)
     center_indices = sampler(len(vertices), size=n_holes)
     centers = vertices[center_indices]
 
+    hole_size_range = n * np.asarray(dropout_range)
+    if dropout_range[0] == dropout_range[1]:
+        hole_sizes = [hole_size_range[0]] * n_holes
+    else:
+        hole_sizes = np.random.randint(*hole_size_range, size=n_holes)
+
     # Crop holes of random size around the centers.
     to_crop = []
-    hole_size_range = n * np.asarray(dropout_range)
-    for center in centers:
-        hole_size = np.random.randint(*hole_size_range)
-        _, indices = kdtree.query(center, k=hole_size)
+    for center, size in zip(centers, hole_sizes):
+        _, indices = kdtree.query(center, k=size)
         to_crop.append(indices)
     to_crop = np.unique(np.concatenate(to_crop))
 
