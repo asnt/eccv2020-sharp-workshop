@@ -100,10 +100,12 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
 
     Args:
         vertices: The vertices of the mesh.
-        n_holes: int or (low, high), number of holes to shot, or bounds from
+        n_holes (int or (int, int)): Number of holes to shot, or bounds from
             which to randomly draw the number of holes.
-        dropout: int or (low, high), proportion of points to remove in a single
-            hole, or bounds from which to randomly draw the proportion.
+        dropout (float or (float, float)): Proportion of points (with respect
+            to the total number of points) in each hole, or bounds from which
+            to randomly draw the proportions (a different proportion is drawn
+            for each hole).
 
     Returns:
         Array of indices of the points to remove.
