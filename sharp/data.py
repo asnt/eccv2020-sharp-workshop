@@ -240,8 +240,7 @@ def load_obj(path):
 
         if not texcoords:
             texture_indices = []
-
-        if texcoords:
+        else:
             texcoords, texture_indices = _complete_texcoords(texcoords,
                                                              texture_indices)
 
