@@ -6,7 +6,7 @@ Display help on available commands:
 $ python -m sharp
 ```
 
-Display help on the `convert` command:
+Display help on a specific command, e.g. `convert`:
 
 ```bash
 $ python -m sharp convert -h
