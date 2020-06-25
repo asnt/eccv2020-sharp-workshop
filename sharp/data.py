@@ -370,30 +370,3 @@ def save_npz(path, mesh):
         texcoords_indices=mesh.texture_indices.astype("uint32"),
         texture=(255 * mesh.texture).astype("uint8"),
     )
-
-
-def _do_convert(args):
-    mesh = load_mesh(args.input)
-    save_mesh(args.output, mesh)
-
-
-def _parse_args():
-    parser = argparse.ArgumentParser()
-    subparsers = parser.add_subparsers()
-
-    parser_convert = subparsers.add_parser("convert",
-                                           help="convert between mesh formats")
-    parser_convert.add_argument("input", type=pathlib.Path)
-    parser_convert.add_argument("output", type=pathlib.Path)
-    parser_convert.set_defaults(func=_do_convert)
-
-    return parser.parse_args()
-
-
-def main():
-    args = _parse_args()
-    args.func(args)
-
-
-if __name__ == "__main__":
-    main()
