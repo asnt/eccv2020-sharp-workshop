@@ -95,8 +95,7 @@ def estimate_plane(A, B, C):
     return c, n
 
 
-def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2),
-                random_state=None):
+def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
     """Generate a partial shape by cutting holes of random location and size.
 
     Args:
@@ -111,13 +110,12 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2),
     """
     n = vertices.shape[0]
     kdtree = cKDTree(vertices, leafsize=200)
-    sampler = random_state and random_state.choice or np.random.choice
 
     if not isinstance(n_holes, numbers.Integral):
         n_holes = np.random.randint(*n_holes)
 
     # Select random hole centers.
-    center_indices = sampler(len(vertices), size=n_holes)
+    center_indices = np.random.choice(len(vertices), size=n_holes)
     centers = vertices[center_indices]
 
     if isinstance(dropout, numbers.Number):
