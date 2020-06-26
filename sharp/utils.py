@@ -111,7 +111,7 @@ def shoot_holes(vertices, n_holes, dropout):
             for each hole).
 
     Returns:
-        array: Indices of the points making up the holes.
+        array: Indices of the points defining the holes.
     """
     if not isinstance(n_holes, numbers.Integral):
         n_holes = np.random.randint(*n_holes)
