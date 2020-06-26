@@ -110,8 +110,6 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
     Returns:
         Array of indices of the points to remove.
     """
-    kdtree = cKDTree(vertices, leafsize=200)
-
     if not isinstance(n_holes, numbers.Integral):
         n_holes = np.random.randint(*n_holes)
 
@@ -127,7 +125,8 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
         hole_size_bounds = n_vertices * np.asarray(dropout)
         hole_sizes = np.random.randint(*hole_size_bounds, size=n_holes)
 
-    # Crop holes of random size around the centers.
+    # Create holes by looking for the k nearest neighbours around the centers.
+    kdtree = cKDTree(vertices, leafsize=200)
     to_crop = []
     for center, size in zip(centers, hole_sizes):
         _, indices = kdtree.query(center, k=size)
