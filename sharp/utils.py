@@ -95,7 +95,7 @@ def estimate_plane(A, B, C):
     return c, n
 
 
-def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
+def shoot_holes(vertices, n_holes, dropout):
     """Generate a partial shape by cutting holes of random location and size.
 
     Each hole is created by selecting a random point as the center and removing
