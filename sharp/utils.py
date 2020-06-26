@@ -98,9 +98,12 @@ def estimate_plane(A, B, C):
 def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
     """Generate a partial shape by cutting holes of random location and size.
 
+    Each hole is created by selecting a random point as the center and removing
+    the k nearest-neighboring points around it.
+
     Args:
         vertices: The vertices of the mesh.
-        n_holes (int or (int, int)): Number of holes to shot, or bounds from
+        n_holes (int or (int, int)): Number of holes to create, or bounds from
             which to randomly draw the number of holes.
         dropout (float or (float, float)): Proportion of points (with respect
             to the total number of points) in each hole, or bounds from which
@@ -108,7 +111,7 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
             for each hole).
 
     Returns:
-        Array of indices of the points to remove.
+        array: Indices of the points making up the holes.
     """
     if not isinstance(n_holes, numbers.Integral):
         n_holes = np.random.randint(*n_holes)
@@ -125,7 +128,7 @@ def shoot_holes(vertices, n_holes=(3, 10), dropout=(1e-2, 5e-2)):
         hole_size_bounds = n_vertices * np.asarray(dropout)
         hole_sizes = np.random.randint(*hole_size_bounds, size=n_holes)
 
-    # Create holes by looking for the k nearest neighbours around the centers.
+    # Identify the points indices making up the holes.
     kdtree = cKDTree(vertices, leafsize=200)
     to_crop = []
     for center, size in zip(centers, hole_sizes):
