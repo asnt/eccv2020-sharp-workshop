@@ -1,6 +1,4 @@
-
-
-LANDMARK_NAMES = [
+NAMES = [
     'nose',
     'neck',
     'shoulder_right',
@@ -73,3 +71,57 @@ LANDMARK_NAMES = [
 ]
 
 
+NAMES_HAND_RIGHT = [
+    'wrist_right',
+    'hand_base_right',
+    'finger_thumb_base_right',
+    'finger_thumb_middle_right',
+    'finger_thumb_top_right',
+    'finger_thumb_tip_right',
+    'finger_index_base_right',
+    'finger_index_middle_right',
+    'finger_index_top_right',
+    'finger_index_tip_right',
+    'finger_middle_base_right',
+    'finger_middle_middle_right',
+    'finger_middle_top_right',
+    'finger_middle_tip_right',
+    'finger_ring_base_right',
+    'finger_ring_middle_right',
+    'finger_ring_top_right',
+    'finger_ring_tip_right',
+    'finger_baby_base_right',
+    'finger_baby_middle_right',
+    'finger_baby_top_right',
+    'finger_baby_tip_right',
+    'finger_mean_base_knuckle_right',
+    'finger_mean_base_knuckle_right',
+]
+
+
+NAMES_HAND_LEFT = [
+    'wrist_left',
+    'hand_base_left',
+    'finger_thumb_base_left',
+    'finger_thumb_middle_left',
+    'finger_thumb_top_left',
+    'finger_thumb_tip_left',
+    'finger_index_base_left',
+    'finger_index_middle_left',
+    'finger_index_top_left',
+    'finger_index_tip_left',
+    'finger_middle_base_left',
+    'finger_middle_middle_left',
+    'finger_middle_top_left',
+    'finger_middle_tip_left',
+    'finger_ring_base_left',
+    'finger_ring_middle_left',
+    'finger_ring_top_left',
+    'finger_ring_tip_left',
+    'finger_baby_base_left',
+    'finger_baby_middle_left',
+    'finger_baby_top_left',
+    'finger_baby_tip_left',
+    'finger_mean_base_knuckle_left',
+    'finger_mean_base_knuckle_left',
+]
