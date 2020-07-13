@@ -1,6 +1,6 @@
 # Changlog
 
-## [unreleased] - yyyy-mm-dd
+## [1.3.0] - 2020-07-13
 
 ### Changed
 
