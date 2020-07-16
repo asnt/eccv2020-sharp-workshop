@@ -238,11 +238,11 @@ def load_obj(path):
 
         faces, texture_indices, faces_normal_indices = _parse_faces(faces)
 
-        if not texcoords:
-            texture_indices = []
-        else:
+        if len(texcoords) > 0:
             texcoords, texture_indices = _complete_texcoords(texcoords,
                                                              texture_indices)
+        else:
+            texture_indices = np.array([])
 
         if normals:
             normals = np.array(normals)
