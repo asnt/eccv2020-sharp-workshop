@@ -234,15 +234,15 @@ def load_obj(path):
             vertex_colors = vertices[:, 3:]
         vertices = vertices[:, :3]
 
-        texcoords = np.array(texcoords)
-
         faces, texture_indices, faces_normal_indices = _parse_faces(faces)
 
-        if len(texcoords) > 0:
+        if texcoords:
+            texcoords = np.asarray(texcoords, dtype=float)
+            texture_indices = np.asarray(texture_indices, dtype=int)
             texcoords, texture_indices = _complete_texcoords(texcoords,
                                                              texture_indices)
         else:
-            texture_indices = np.array([])
+            texture_indices = []
 
         if normals:
             normals = np.array(normals)
