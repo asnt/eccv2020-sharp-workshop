@@ -45,6 +45,7 @@ class UVTrianglesRenderer:
         self.background_color = (0, 0, 0)
 
     def __del__(self):
+        self.ctx.release()
         self.fbo.release()
         self.shader.release()
 
