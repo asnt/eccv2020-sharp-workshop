@@ -21,7 +21,7 @@ def slice_by_plane(mesh, center, n):
 
 
 def remove_points(mesh, indices, blackoutTexture=True):
-    cpy = copy.copy(mesh)
+    cpy = copy.deepcopy(mesh)
     cpy.vertices = np.delete(mesh.vertices, indices, axis=0)
     if mesh.vertex_colors is not None:
         cpy.vertex_colors = np.delete(mesh.vertex_colors, indices, axis=0)
