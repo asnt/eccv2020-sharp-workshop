@@ -8,7 +8,7 @@ Notation:
 - $`Y'`$: the estimated complete shape.
 
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
-to the ground truth, `Y`, using three criterions:
+to the ground truth, $`Y`$, using three criterions:
 
 - **surface-to-surface distances**: consist of two directed distances, the first one
 is computed from the estimation to the reference, and the second one is computed
