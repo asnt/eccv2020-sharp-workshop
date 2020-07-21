@@ -91,11 +91,17 @@ def render_texture(texture, tex_coords, tri_indices):
     return renderer.render(tex_coords, tri_indices, texture, True)
 
 
-def estimate_plane(A, B, C):
-    c = (A + B + C) / 3
-    n = np.cross(B - A, C - A)
-    assert(np.isclose(np.dot(B-A, n), np.dot(C-A, n)))
-    return c, n
+def estimate_plane(a, b, c):
+    """Estimate the parameters of the plane passing by three points.
+
+    Returns:
+        center(float): The center point of the three input points.
+        normal(float): The normal to the plane.
+    """
+    center = (a + b + c) / 3
+    normal = np.cross(b - a, c - a)
+    assert(np.isclose(np.dot(b - a, normal), np.dot(c - a, normal)))
+    return center, normal
 
 
 def shoot_holes(vertices, n_holes, dropout, mask_faces=None, faces=None,
