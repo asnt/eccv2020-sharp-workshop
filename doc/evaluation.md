@@ -31,12 +31,12 @@ where $`y'`$ are the sampled points on the estimated surface of $`Y'`$ and  $`y`
 In the two directions, the shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
 ```math
-d(y', Y) = d_{shape}(y', Y),
+d(a, B) = d_{shape}(a, B),
 ```
-operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point on the source surface and its nearest triangle on the target surface.
+operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point `$a$` on the source surface `$A$` and its nearest triangle on the target surface `$B$`.
 For the texture error, the distance,
 ```math
-d(y', Y) = d_{texture}(y', Y),
+d(a, B)  = d_{texture}(a, B),
 ```
 operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance.
 
