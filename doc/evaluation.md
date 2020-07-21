@@ -5,7 +5,7 @@
 Notation:
 
 - `Y`: the ground truth complete shape,
-- `Y_t`: the ground truth complete shape,
+- `math Y_t`: the ground truth complete shape,
 - `Y'`: the estimated complete shape.
 
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
