@@ -16,8 +16,8 @@ from the reference to the estimation. In the two directions, both shape and
 texture are evaluated separately.  
 - **surface hit-rates**: consist of two rates that are computed in two directions 
 (from estimation to reference, and from reference to estimation). This rate 
-indicates the amount of surface points in a source mesh that have a correspondence 
-along the normal direction in a target mesh. In the two directions, the hit-rate 
+indicates the amount of points sampled on the surface of a source mesh that have
+a correspondence along the normal direction in a target mesh. In the two directions, the hit-rate 
 is a score with values in [0,1].
 - **surface area ratio**: consists of a score that quantifies the similarity between
 the surface area of the estimation and that of the reference. 
