@@ -15,7 +15,7 @@ to the ground truth, $`Y`$, using three criterions:
 Consist of two directed distances:
 
 1. $`d_{ER}`$ is computed from the estimation to the reference
-2. $`d_{RE}`$ is computedfrom the reference to the estimation. 
+2. $`d_{RE}`$ is computed from the reference to the estimation. 
 
 The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and computing their 
@@ -33,13 +33,13 @@ For the shape error, the distance,
 ```math
 d(a, B) = d_{shape}(a, B),
 ```
-operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point $`a`$ on the source surface $`A`$ and its nearest triangle on the target surface $`B`$.
+operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point $`a`$ on the source surface $`A`$ 
+and its nearest triangle on the target surface $`B`$.
 For the texture error, the distance,
 ```math
 d(a, B)  = d_{texture}(a, B),
 ```
 operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance.
-
 
 ### Surface hit-rates
 
@@ -48,9 +48,14 @@ Consist of two rates that are computed in two directions:
 1. $`h_{ER}`$ computed from estimation to reference
 2. $`h_{RE}`$ computed from reference to estimation. 
 
-This rate indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
-a correspondence along the normal direction in a target mesh $`B`$. In the two directions, 
-the hit-rate is a score with a value in [0,1].
+The hit-rate $`h_{AB}`$ indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
+a correspondence along the normal direction in a target mesh $`B`$ (i.e. the normals at these points intersect the nearest triangles in mesh $`B`$). 
+Let $`H_{AB}`$ be the number of points of the source mesh $`A`$ that hit the target $`B`$ and $`M_{AB}`$ be the number of points of the source mesh $`A`$ that miss the target $`B`$. 
+The hit-rate from $`A`$ to $`B`$ is then given by,
+```math
+h_{AB} = \frac{H^s}{H^s + M^s}
+```
+In the two directions, the hit-rate is a score with a value in [0,1].
 
 
 ### Surface area ratio
