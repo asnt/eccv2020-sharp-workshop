@@ -3,7 +3,10 @@ import numbers
 
 import cv2
 import numpy as np
-from scipy.spatial import cKDTree
+try:
+    from scipy.spatial import cKDTree as KDTree
+except ImportError:
+    from scipy.spatial import KDTree
 
 from .trirender import UVTrianglesRenderer
 
@@ -146,7 +149,7 @@ def shoot_holes(vertices, n_holes, dropout, mask_faces=None, faces=None,
         hole_sizes = rng.randint(*hole_size_bounds, size=n_holes)
 
     # Identify the points indices making up the holes.
-    kdtree = cKDTree(vertices, leafsize=200)
+    kdtree = KDTree(vertices, leafsize=200)
     to_crop = []
     for center, size in zip(centers, hole_sizes):
         _, indices = kdtree.query(center, k=size)
