@@ -20,6 +20,7 @@ Consist of two directed distances:
 The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and computing their 
 distances to the nearest triangles in mesh $`B`$. 
+
 The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by, 
 ```math
 d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y) \\
