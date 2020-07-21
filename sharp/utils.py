@@ -61,7 +61,8 @@ def remove_points(mesh, indices, blackoutTexture=True):
                 img = render_texture(mesh.texture, tex_coords, tri_indices)
                 # dilate the result to remove sewing
                 kernel = np.ones((3, 3), np.uint8)
-                cpy.texture = cv2.dilate(img, kernel, iterations=1)
+                texture_f32 = cv2.dilate(img, kernel, iterations=1)
+                cpy.texture = texture_f32.astype(np.float64)
 
         if mesh.faces_normal_indices is not None:
             cpy.faces_normal_indices = np.delete(
