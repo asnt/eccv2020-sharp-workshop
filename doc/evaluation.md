@@ -39,7 +39,10 @@ For the texture error, the distance,
 ```math
 d(a, B)  = d_{texture}(a, B) ,
 ```
-operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance.
+operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance. 
+
+This results in two shape distance values ($`d_{ER}^{shape}`$, $`d_{RE}^{shape}`$) and two texture distance values ($`d_{ER}^{texture}`$, $`d_{RE}^{texture}`$).
+Good estimations are expected to have low shape and texture distance values. 
 
 ### 2. Surface hit-rates
 
@@ -59,7 +62,7 @@ The hit-rate from $`A`$ to $`B`$ is then given by,
 ```math
 h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}} .
 ```
-In the two directions, the hit-rate is a score with a value in [0,1].
+In the two directions, the hit-rate is a score with a value in [0,1]. Good estimations are expected to have high hit-rates.
 
 
 ### 3. Surface area score
@@ -79,7 +82,7 @@ The area score is then given by,
 a = 1 - | \bar{A_{R}} - \bar{A_{E}} | .
 ```
 
-This score results in a value in [0,1].
+This score results in a value in [0,1]. Good estimations are expected to have a high area score. 
 
 
 ### Final score
@@ -89,9 +92,9 @@ The final score is a combination of the three measures explained above.
 The shape score is computed as follows, 
 
 ```math
-S_s = \frac{1}{2} [ \phi_{ER}(d_{ER}(Y',Y)) h_{ER} + \phi_{RE}(d_{RE}(Y,Y')) h_{RE} ]
+S_s = \frac{1}{2} [ \Phi_{ER}(d_{ER}^{shape}(Y',Y)) h_{ER} + \Phi_{RE}(d_{RE}{shape}(Y,Y')) h_{RE} ] ,
 ```
-
+where $`\Phi(d) = \e^{-kd^2}`$ maps the distance $`d`$ to a score in [0,1].  
 
 ## Challenge-specific criteria
 
