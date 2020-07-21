@@ -151,12 +151,8 @@ def _parse_faces(obj_faces):
             #     faces_normals.append(el)
 
     faces = np.array(faces, dtype=int)
-    faces_texture = (np.array(faces_texture, dtype=int)
-                     if faces_texture is not None
-                     else None)
-    faces_normals = (np.array(faces_normals, dtype=int)
-                     if faces_normals is not None
-                     else None)
+    faces_texture = np.array(faces_texture, dtype=int)
+    faces_normals = np.array(faces_normals, dtype=int)
 
     # Change to zero-based indexing.
     faces -= 1
