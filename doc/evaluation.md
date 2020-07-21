@@ -10,21 +10,31 @@ Notation:
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, $`Y`$, using three criterions:
 
-- **Surface-to-surface distances**: consist of two directed distances, the first one
-is computed from the estimation to the reference, and the second one is computed
-from the reference to the estimation. In the two directions, both shape and 
-texture are evaluated separately.  
-The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
-approximated in practice by sampling points on $`A`$ and computing their distances to the nearest triangles in mesh $`B`$. 
+- **Surface-to-surface distances**: consist of two directed distances, the first one $`d(E,R)`$
+is computed from the estimation to the reference, and the second one $`d(R,E)`$ is computed
+from the reference to the estimation. The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
+approximated in practice by sampling points on $`A`$ and computing their 
+distances to the nearest triangles in mesh $`B`$. 
+The directed distance $`d(R,E)`$ is given by, 
+```math
+d(R,E)_Y(Y') = \sum_{y' \in Y'} d(y', Y),
+```
+In the two directions, the shape and texture reconstruction errors are measured separately.
+For the shape error, the distance,
+$`d(y', Y) = d_{shape}(y', Y),`$
+operates on the 3D positions directly.
+For the texture error, the distance,
+$`d(y', Y) = d_{texture}(y', Y),`$
+operates on the interpolated texture values at the source and target 3D
+positions.
+
 
 
 - **Surface hit-rates**: consist of two rates that are computed in two directions 
-(from estimation to reference, and from reference to estimation). This rate 
-indicates the amount of points sampled on the surface of a source mesh that have
-a correspondence along the normal direction in a target mesh. In the two directions, the hit-rate 
-is a score with values in [0,1].
-
-
+(from estimation to reference $`h(E,R)`$, and from reference to estimation $`h(R,E)`$). This rate 
+indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
+a correspondence along the normal direction in a target mesh $`B`$. In the two directions, 
+the hit-rate is a score with a value in [0,1].
 
 
 - **Surface area ratio**: consists of a score that quantifies the similarity between
