@@ -53,7 +53,7 @@ a correspondence along the normal direction in a target mesh $`B`$ (i.e. the nor
 Let $`H_{AB}`$ be the number of points of the source mesh $`A`$ that hit the target $`B`$ and $`M_{AB}`$ be the number of points of the source mesh $`A`$ that miss the target $`B`$. 
 The hit-rate from $`A`$ to $`B`$ is then given by,
 ```math
-h_{AB} = \frac{H^s}{H^s + M^s}
+h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}}
 ```
 In the two directions, the hit-rate is a score with a value in [0,1].
 
