@@ -135,7 +135,8 @@ def shoot_holes(vertices, n_holes, dropout, mask_faces=None, faces=None,
         rng = np.random.default_rng()
 
     if not isinstance(n_holes, numbers.Integral):
-        n_holes = rng.randint(*n_holes)
+        n_holes_min, n_holes_max = n_holes
+        n_holes = rng.integers(n_holes_min, n_holes_max)
 
     if mask_faces is not None:
         valid_vertex_indices = np.unique(faces[mask_faces > 0])
@@ -153,7 +154,7 @@ def shoot_holes(vertices, n_holes, dropout, mask_faces=None, faces=None,
         hole_sizes = [hole_size] * n_holes
     else:
         hole_size_bounds = n_vertices * np.asarray(dropout)
-        hole_sizes = rng.randint(*hole_size_bounds, size=n_holes)
+        hole_sizes = rng.integers(*hole_size_bounds, size=n_holes)
 
     # Identify the points indices making up the holes.
     kdtree = KDTree(vertices, leafsize=200)
