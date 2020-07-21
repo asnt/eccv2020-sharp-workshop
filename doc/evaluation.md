@@ -32,15 +32,18 @@ operates on the interpolated texture values at the source and target 3D
 positions.
 
 
+### Surface hit-rates
 
-- **Surface hit-rates**: consist of two rates that are computed in two directions 
+Consist of two rates that are computed in two directions 
 (from estimation to reference $`h(E,R)`$, and from reference to estimation $`h(R,E)`$). This rate 
 indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
 a correspondence along the normal direction in a target mesh $`B`$. In the two directions, 
 the hit-rate is a score with a value in [0,1].
 
 
-- **Surface area ratio**: consists of a score that quantifies the similarity between
+### Surface area ratio
+
+Consists of a score that quantifies the similarity between
 the surface area of the estimation and that of the reference. 
 This score consists of a value in [0,1].
 
