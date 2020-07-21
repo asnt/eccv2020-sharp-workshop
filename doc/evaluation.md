@@ -26,7 +26,7 @@ The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by,
 d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y) \\
 d_{ER}(Y',Y) = \sum_{y \in Y} d(y, Y'),
 ```
-where $`y'`$ are the sampled points on the estimated surface of $`Y'`$ and  $`y`$ are the sampled points on the reference surface of $`Y`$.
+where $`y'`$ are the sampled points on the estimated surface $`Y'`$ and $`y`$ are the sampled points on the reference surface $`Y`$.
 
 In the two directions, the shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
