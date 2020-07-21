@@ -89,7 +89,7 @@ The final score is a combination of the three measures explained above.
 The shape score is computed as follows, 
 
 ```math
-S_s = \frac{1}{2} ( \phi_{ER}(d_{ER}(Y',Y))h_{ER} + \phi_{RE}(d_{ER}(Y',Y))h_{RE})
+S_s = \frac{1}{2} [ \phi_{ER}(d_{ER}(Y',Y)) h_{ER} + \phi_{RE}(d_{RE}(Y,Y')) h_{RE} ]
 ```
 
 
