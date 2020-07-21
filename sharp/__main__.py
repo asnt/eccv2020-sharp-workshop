@@ -259,16 +259,13 @@ def _parse_args():
         "--holes",
         type=int,
         default=40,
-        help="If not None, fixed number of holes to shoot, otherwise a random"
-             " number between min_holes and max_holes is used.",
+        help="Number of holes to shoot.",
     )
     parser_shoot_dir.add_argument(
         "--dropout",
         type=float,
         default=2e-2,
-        help="If not None, fixed proportion of points to remove in a single"
-             " hole, otherwise a random proportion between min_dropout and"
-             " max_dropout is used.",
+        help="Proportion of points of the mesh to remove in a single hole.",
     )
     parser_shoot_dir.add_argument(
         "--seed",
