@@ -265,82 +265,92 @@ def load_obj(path):
         )
 
 
-def save_obj(path, mesh, save_texture=True, verts_to_high_light=None):
-    path = pathlib.Path(path)
-    out_dir = pathlib.Path(path).parent
-    out_dir.mkdir(parents=True, exist_ok=True)
-    with open(path, 'w') as f:
-        if save_texture:
-            mtlpath = path.with_suffix(".mtl")
-            mtlname = mtlpath.name
-            texpath = path.with_suffix(".png")
-            texname = texpath.name
-            strr = 'mtllib ' + mtlname + '\n'
-            f.write(strr)
+def _save_mtl(path, texture_name=None):
+    if texture_name is not None:
+        texture_command = f"map_Kd {texture_name}"
+    else:
+        texture_command = ""
 
-            f.write('usemtl material_0\n')
-
-            # create mtl file
-            mtlstr = '''\
-# File exported by Artec 3D Scanning Solutions
-# www.artec3d.com
+    content = f"""\
 newmtl material_0
 Ka 1 1 1
 Kd 1 1 1
 Ks 1 1 1
 Ns 1000
-map_Kd %s
+{texture_command}
 newmtl material_1
 Ka 1 1 1
 Kd 1 1 1
 Ks 1 1 1
 Ns 1000
-''' % texname
-            with open(mtlpath, 'w') as m:
-                m.write(mtlstr)
+"""
 
-            _save_texture(texpath, mesh.texture)
+    with open(path, 'w') as mtl_file:
+        mtl_file.write(content)
 
-        for i, vertex in enumerate(mesh.vertices):
-            p1, p2, p3 = vertex
-            if verts_to_high_light is not None:
-                if i in verts_to_high_light:
-                    f.write(
-                        u'v {0:f} {1:f} {2:f} 1 0 0\n'.format(p1, p2, p3))
-                else:
-                    f.write(
-                        u'v {0:f} {1:f} {2:f} 1 1 1\n'.format(p1, p2, p3))
-            else:
-                if mesh.vertex_colors is not None:
-                    c1, c2, c3 = mesh.vertex_colors[i, :]
-                    f.write(u'v {0:f} {1:f} {2:f} {3:f} {4:f} {5:f}\n'.format(p1, p2, p3, c1, c2, c3))
-                else:
-                    f.write(u'v {0:f} {1:f} {2:f}\n'.format(p1, p2, p3))
 
-            if mesh.vertex_normals is not None:
-                n1, n2, n3 = mesh.vertex_normals[i, :]
-                f.write(u'vn {0:f} {1:f} {2:f}\n'.format(n1, n2, n3))
+def save_obj(path, mesh, save_texture=True):
+    path = pathlib.Path(path)
+    out_dir = pathlib.Path(path).parent
+    out_dir.mkdir(parents=True, exist_ok=True)
+
+    # Write the texture image file.
+    if save_texture and mesh.texture is not None:
+        texture_path = path.with_suffix(".png")
+        texture_name = texture_path.name
+        _save_texture(texture_path, mesh.texture)
+    else:
+        texture_path = None
+        texture_name = None
+
+    # Write the mtl file.
+    mtlpath = path.with_suffix(".mtl")
+    mtlname = mtlpath.name
+    _save_mtl(mtlpath, texture_name=texture_name)
+
+    # Write the obj file.
+    with open(path, 'w') as f:
+        f.write(f"mtllib {mtlname}\n")
+        f.write("usemtl material_0\n")
+
+        if mesh.vertex_colors is not None:
+            for vertex, color in zip(mesh.vertices, mesh.vertex_colors):
+                f.write("v {} {} {} {} {} {}\n".format(*vertex, *color))
+        else:
+            for vertex in mesh.vertices:
+                f.write("v {} {} {}\n".format(*vertex))
+
+        if mesh.vertex_normals is not None:
+            for normal in mesh.vertex_normals:
+                f.write("vn {} {} {}\n".format(*normal))
+
         if mesh.texcoords is not None:
-            for tc in mesh.texcoords:
-                t1, t2 = tc
-                f.write(u'vt {0:f} {1:f}\n'.format(t1, t2))
+            for coords in mesh.texcoords:
+                f.write("vt {} {}\n".format(*coords))
 
-        for idx, face in enumerate(mesh.faces):
-            el = ['' for x in range(len(face))]
-            fs = face + 1
+        def _interleave_columns(*arrays):
+            n_rows = len(arrays[0])
+            return np.dstack(arrays).reshape(n_rows, -1)
 
-            ts = mesh.texture_indices[idx] + 1 if mesh.texture_indices is not None else el
-            ns = mesh.faces_normal_indices[idx] + 1 if mesh.faces_normal_indices is not None else el
-            f.write(u'f ')
-            if mesh.texture_indices is None and mesh.faces_normal_indices is None:
-                [f.write(' {}'.format(f1)) for f1 in fs]
-            elif mesh.faces_normal_indices is None:
-                [f.write(' {}/{}'.format(f1, t1))
-                 for f1, t1 in zip(fs, ts)]
-            else:
-                [f.write(' {}/{}/{}'.format(f1, t1, n1))
-                 for f1, t1, n1 in zip(fs, ts, ns)]
-            f.write(u'\n')
+        faces = mesh.faces + 1
+        texture_indices = (mesh.texture_indices + 1
+                           if mesh.texture_indices is not None
+                           else None)
+        normal_indices = (mesh.faces_normal_indices + 1
+                          if mesh.faces_normal_indices is not None
+                          else None)
+
+        if texture_indices is None and normal_indices is None:
+            for face in faces:
+                f.write("f {} {} {}".format(*face))
+        elif normal_indices is None:
+            indices = _interleave_columns(faces, texture_indices)
+            for indices_ in indices:
+                f.write("f {}/{} {}/{} {}/{}\n".format(*indices_))
+        elif texture_indices is None:
+            indices = _interleave_columns(faces, normal_indices)
+            for indices_ in indices:
+                f.write("f {}//{} {}//{} {}//{}\n".format(*indices_))
 
 
 def astype_or_none(array, type_):
