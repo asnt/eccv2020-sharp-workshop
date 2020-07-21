@@ -22,7 +22,7 @@ approximated in practice by sampling points on $`A`$ and computing their
 distances to the nearest triangles in mesh $`B`$. 
 The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by, 
 ```math
-d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y),
+d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y) \\
 d_{ER}(Y',Y) = \sum_{y \in Y} d(y, Y'),
 ```
 where $`y'`$ are the sampled points on the estimated surface of $`Y'`$ and  $`y`$ are the sampled points on the reference surface of $`Y`$.
