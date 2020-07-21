@@ -89,12 +89,14 @@ This score results in a value in [0,1]. Good estimations are expected to have a 
 
 The final score is a combination of the three measures explained above. 
 
-The shape score is computed as follows, 
+The shape and texture scores are computed as follows, 
 
 ```math
-S_s = \frac{1}{2} [ \Phi_{ER}(d_{ER}^{shape}(Y',Y)) h_{ER} + \Phi_{RE}(d_{RE}{shape}(Y,Y')) h_{RE} ] ,
+S_s = \frac{1}{2} [ \Phi_{k_1}(d_{ER}^{shape}(Y',Y)) h_{ER} + \Phi_{k_2}(d_{RE}^{shape}(Y,Y')) h_{RE} ] , \\
+S_t = \frac{1}{2} [ \Phi_{k_3}(d_{ER}^{texture}(Y',Y)) h_{ER} + \Phi_{k_4}(d_{RE}^{texture}(Y,Y')) h_{RE} ] ,
 ```
-where $`\Phi(d) = \e^{-kd^2}`$ maps the distance $`d`$ to a score in [0,1].  
+
+where $`\Phi_{k_i}(d) = e^{-k_id^2}`$ maps a distance $`d`$ to a score in [0,1]. 
 
 ## Challenge-specific criteria
 
