@@ -12,24 +12,29 @@ to the ground truth, $`Y`$, using three criterions:
 
 ### Surface-to-surface distances 
 
-Consist of two directed distances, the first one $`d_{ER}`$
-is computed from the estimation to the reference, and the second one $`d_{RE}`$ is computed
-from the reference to the estimation. The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
+Consist of two directed distances:
+
+1. $`d_{ER}`$ is computed from the estimation to the reference
+2. $`d_{RE}`$ is computedfrom the reference to the estimation. 
+
+The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and computing their 
 distances to the nearest triangles in mesh $`B`$. 
-The directed distance $`d(R,E)`$ is given by, 
+The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by, 
 ```math
 d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y),
+d_{ER}(Y',Y) = \sum_{y \in Y} d(y, Y'),
 ```
-where
+where $`y'`$ are the sampled points on the estimated surface of $`Y'`$ and  $`y`$ are the sampled points on the reference surface of $`Y`$.
+
 In the two directions, the shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
 $`d(y', Y) = d_{shape}(y', Y),`$
-operates on the 3D positions directly.
+operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point on the source surface and its nearest triangle on the target surface.
 For the texture error, the distance,
 $`d(y', Y) = d_{texture}(y', Y),`$
 operates on the interpolated texture values at the source and target 3D
-positions.
+positions used to compute the shape distance.
 
 
 ### Surface hit-rates
