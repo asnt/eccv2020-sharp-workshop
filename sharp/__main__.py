@@ -3,6 +3,8 @@ import logging
 import pathlib
 import sys
 
+import numpy as np
+
 from . import data
 from . import utils
 
@@ -21,7 +23,14 @@ def _do_shoot(args):
                else (args.min_holes, args.max_holes))
     dropout = (args.dropout if args.dropout is not None
                else (args.min_dropout, args.max_dropout))
-    point_indices = utils.shoot_holes(mesh.vertices, n_holes, dropout)
+    mask_faces = (np.load(args.mask) if args.mask is not None
+                  else None)
+    faces = None if mask_faces is None else mesh.faces
+    point_indices = utils.shoot_holes(mesh.vertices,
+                                      n_holes,
+                                      dropout,
+                                      mask_faces=mask_faces,
+                                      faces=faces)
     shot = utils.remove_points(mesh, point_indices)
     shot.save(str(args.output))
 
@@ -68,6 +77,11 @@ def _parse_args():
         "--max-dropout", type=float, default=0.05,
         help="maximum proportion of points to remove in a single hole"
              " (default: 0.05)",
+    )
+    parser_shoot.add_argument(
+        "--mask", type=pathlib.Path,
+        help=" (optional) path to the mask (.npy) to generate holes only on"
+             " regions considered for evaluation",
     )
     parser_shoot.set_defaults(func=_do_shoot)
 

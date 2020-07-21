@@ -95,38 +95,55 @@ def estimate_plane(A, B, C):
     return c, n
 
 
-def shoot_holes(vertices, n_holes, dropout):
+def shoot_holes(vertices, n_holes, dropout, mask_faces=None, faces=None,
+                rng=None):
     """Generate a partial shape by cutting holes of random location and size.
 
     Each hole is created by selecting a random point as the center and removing
     the k nearest-neighboring points around it.
 
     Args:
-        vertices: The vertices of the mesh.
+        vertices: The array of vertices of the mesh.
         n_holes (int or (int, int)): Number of holes to create, or bounds from
             which to randomly draw the number of holes.
         dropout (float or (float, float)): Proportion of points (with respect
             to the total number of points) in each hole, or bounds from which
             to randomly draw the proportions (a different proportion is drawn
             for each hole).
+        mask_faces: A boolean mask on the faces. 1 to keep, 0 to ignore. If
+                    set, the centers of the holes are sampled only on the
+                    non-masked regions.
+        faces: The array of faces of the mesh. Required only when `mask_faces`
+               is set.
+        rng: (optional) An initialised np.random.Generator object. If None, a
+             default Generator is created.
 
     Returns:
         array: Indices of the points defining the holes.
     """
+    if rng is None:
+        rng = np.random.default_rng()
+
     if not isinstance(n_holes, numbers.Integral):
-        n_holes = np.random.randint(*n_holes)
+        n_holes = rng.randint(*n_holes)
+
+    if mask_faces is not None:
+        valid_vertex_indices = np.unique(faces[mask_faces > 0])
+        valid_vertices = vertices[valid_vertex_indices]
+    else:
+        valid_vertices = vertices
 
     # Select random hole centers.
-    center_indices = np.random.choice(len(vertices), size=n_holes)
-    centers = vertices[center_indices]
+    center_indices = rng.choice(len(valid_vertices), size=n_holes)
+    centers = valid_vertices[center_indices]
 
-    n_vertices = len(vertices)
+    n_vertices = len(valid_vertices)
     if isinstance(dropout, numbers.Number):
         hole_size = n_vertices * dropout
         hole_sizes = [hole_size] * n_holes
     else:
         hole_size_bounds = n_vertices * np.asarray(dropout)
-        hole_sizes = np.random.randint(*hole_size_bounds, size=n_holes)
+        hole_sizes = rng.randint(*hole_size_bounds, size=n_holes)
 
     # Identify the points indices making up the holes.
     kdtree = cKDTree(vertices, leafsize=200)
