@@ -10,15 +10,18 @@ Notation:
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, $`Y`$, using three criterions:
 
-- **Surface-to-surface distances**: consist of two directed distances, the first one $`d_{ER}`$
+### Surface-to-surface distances 
+
+Consist of two directed distances, the first one $`d_{ER}`$
 is computed from the estimation to the reference, and the second one $`d_{RE}`$ is computed
 from the reference to the estimation. The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and computing their 
 distances to the nearest triangles in mesh $`B`$. 
 The directed distance $`d(R,E)`$ is given by, 
 ```math
-d(R,E)_Y(Y') = \sum_{y' \in Y'} d(y', Y),
+d_{RE}(Y,Y') = \sum_{y' \in Y'} d(y', Y),
 ```
+where
 In the two directions, the shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
 $`d(y', Y) = d_{shape}(y', Y),`$
