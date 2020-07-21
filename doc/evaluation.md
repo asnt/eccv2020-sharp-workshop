@@ -23,21 +23,21 @@ distances to the nearest triangles in mesh $`B`$.
 
 The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by, 
 ```math
-d_{ER}(Y',Y) = \sum_{y' \in Y'} d(y', Y) \\
-d_{RE}(Y,Y') = \sum_{y \in Y} d(y, Y'),
+d_{ER}(Y',Y) = \sum_{y' \in Y'} d(y', Y) ,\\
+d_{RE}(Y,Y') = \sum_{y \in Y} d(y, Y') ,
 ```
 where $`y'`$ are the sampled points on the estimated surface $`Y'`$ and $`y`$ are the sampled points on the reference surface $`Y`$.
 
 In the two directions, the shape and texture reconstruction errors are measured separately.
 For the shape error, the distance,
 ```math
-d(a, B) = d_{shape}(a, B),
+d(a, B) = d_{shape}(a, B) ,
 ```
 operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point $`a`$ on the source surface $`A`$ 
 and its nearest triangle on the target surface $`B`$.
 For the texture error, the distance,
 ```math
-d(a, B)  = d_{texture}(a, B),
+d(a, B)  = d_{texture}(a, B) ,
 ```
 operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance.
 
@@ -57,7 +57,7 @@ Let us consider:
 
 The hit-rate from $`A`$ to $`B`$ is then given by,
 ```math
-h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}}
+h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}} .
 ```
 In the two directions, the hit-rate is a score with a value in [0,1].
 
@@ -69,15 +69,16 @@ the surface area of the estimation and that of the reference. The surface area o
 denoted as $`A_{E}`$ and $`A_{R}`$, respectively, are computed by summing over the areas of the triangles of each mesh. 
 These areas are then normalized as follows,
 ```math
-\bar{A_{R}} = \frac{A_{R}}{A_{R} + A_{E}}  \\
-\bar{A_{E}} = \frac{A_{E}}{A_{R} + A_{E}} 
+\bar{A_{R}} = \frac{A_{R}}{A_{R} + A_{E}} , \\
+\bar{A_{E}} = \frac{A_{E}}{A_{R} + A_{E}} .
 ```
 
 The area score is then given by,
 
 ```math
-a = 1 - \lfloor \bar{A_{R}} - \bar{A_{E}} \rfloor 
+a = 1 - | \bar{A_{R}} - \bar{A_{E}} | .
 ```
+
 This score results in a value in [0,1].
 
 
