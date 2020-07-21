@@ -44,7 +44,7 @@ operates on the interpolated texture values at the source and target 3D position
 ### Surface hit-rates
 
 Consist of two rates that are computed in two directions 
-(from estimation to reference $`h(E,R)`$, and from reference to estimation $`h(R,E)`$). This rate 
+(from estimation to reference $`h_{ER}`$, and from reference to estimation $`h(R,E)`$). This rate 
 indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
 a correspondence along the normal direction in a target mesh $`B`$. In the two directions, 
 the hit-rate is a score with a value in [0,1].
@@ -57,34 +57,7 @@ the surface area of the estimation and that of the reference.
 This score consists of a value in [0,1].
 
 
-```math
-d(Y', Y) = \frac{1}{2} (\text{accuracy}_Y(Y') + \text{completeness}_Y(Y'))
-```
-
-where accuracy is the directed distance from the estimation to the reference,
-
-```math
-\text{accuracy}_Y(Y') = \sum_{y' \in Y'} d(y', Y),
-```
-
-and completeness is the directed distance from the reference to the estimation,
-
-```math
-\text{completeness}_Y(Y') = \sum_{y \in Y} d(y, Y').
-```
-
-The directed distance $`d(A, B)`$ between meshes $`A`$ and $`B`$ is
-approximated in practice by sampling points on $`A`$ and projecting them on
-$`B`$ along the normal directions.
-
-The shape and texture reconstruction errors are measured separately.
-For the shape error, the distance,
-$`d(y', Y) = d_{shape}(y', Y),`$
-operates on the 3D positions directly.
-For the texture error, the distance,
-$`d(y', Y) = d_{texture}(y', Y),`$
-operates on the interpolated texture values at the source and target 3D
-positions.
+### Final score
 
 
 ## Challenge-specific criteria
