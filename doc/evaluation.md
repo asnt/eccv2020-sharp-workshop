@@ -46,10 +46,9 @@ operates on the interpolated texture values at the source and target 3D position
 Consist of two rates that are computed in two directions:
 
 1. $`h_{ER}`$ computed from estimation to reference
-2. $`h(R,E)`$ computed from reference to estimation. 
+2. $`h_{RE}`$ computed from reference to estimation. 
 
-This rate 
-indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
+This rate indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
 a correspondence along the normal direction in a target mesh $`B`$. In the two directions, 
 the hit-rate is a score with a value in [0,1].
 
