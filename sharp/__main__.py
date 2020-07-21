@@ -1,9 +1,13 @@
 import argparse
+import logging
 import pathlib
 import sys
 
 from . import data
 from . import utils
+
+
+logger = logging.getLogger(__name__)
 
 
 def _do_convert(args):
@@ -83,4 +87,5 @@ def main():
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     main()
