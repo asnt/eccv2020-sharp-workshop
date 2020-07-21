@@ -50,7 +50,11 @@ Consist of two rates that are computed in two directions:
 
 The hit-rate $`h_{AB}`$ indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
 a correspondence along the normal direction in a target mesh $`B`$ (i.e. the normals at these points intersect the nearest triangles in mesh $`B`$). 
-Let $`H_{AB}`$ be the number of points of the source mesh $`A`$ that hit the target $`B`$ and $`M_{AB}`$ be the number of points of the source mesh $`A`$ that miss the target $`B`$. 
+Let us consider:
+
+- $`H_{AB}`$: number of points of the source mesh $`A`$ that hit the target $`B`$ 
+- $`M_{AB}`$: number of points of the source mesh $`A`$ that miss the target $`B`$.
+
 The hit-rate from $`A`$ to $`B`$ is then given by,
 ```math
 h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}}
@@ -58,11 +62,23 @@ h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}}
 In the two directions, the hit-rate is a score with a value in [0,1].
 
 
-### Surface area ratio
+### Surface area score
 
 Consists of a score that quantifies the similarity between
-the surface area of the estimation and that of the reference. 
-This score consists of a value in [0,1].
+the surface area of the estimation and that of the reference. The surface area of the estimated mesh and the reference mesh 
+denoted as $`A_{E}`$ and $`A_{R}`$, respectively, are computed by summing over the areas of the triangles of each mesh. 
+These areas are then normalized as follows,
+```math
+\bar{A_{R}} = \frac{A_{R}}{A_{R} + A_{E}}  \\
+\bar{A_{E}} = \frac{A_{E}}{A_{R} + A_{E}} 
+```
+
+The area score is then given by,
+
+```math
+a = 1 - \lfloor \bar{A_{R}} - \bar{A_{E}} \rfloor 
+```
+This score results in a value in [0,1].
 
 
 ### Final score
