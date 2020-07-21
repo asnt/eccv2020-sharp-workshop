@@ -84,7 +84,7 @@ def shoot_helper(mesh_index,
         if n_shapes == 1:
             return "partial"
         else:
-            # Assuming 0 <= n_shapes <= 99
+            # Assuming 0 <= shape_index <= 99.
             return f"partial-{shape_index:02d}"
 
     def load_mask(rel_path):
