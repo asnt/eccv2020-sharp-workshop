@@ -385,4 +385,5 @@ def save_npz(path, mesh):
         texture=((255 * mesh.texture).astype("uint8")
                  if mesh.texture is not None
                  else None),
+        vertex_colors=astype_or_none(mesh.vertex_colors, "float32"),
     )
