@@ -33,7 +33,7 @@ For the shape error, the distance,
 ```math
 d(a, B) = d_{shape}(a, B),
 ```
-operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point `$a$` on the source surface `$A$` and its nearest triangle on the target surface `$B$`.
+operates on the 3D positions directly and computes a point-to-triangle distance between the sampled point $`a`$ on the source surface $`A`$ and its nearest triangle on the target surface $`B`$.
 For the texture error, the distance,
 ```math
 d(a, B)  = d_{texture}(a, B),
