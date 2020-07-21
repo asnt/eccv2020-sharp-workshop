@@ -76,18 +76,18 @@ These areas are then normalized as follows,
 \bar{A_{E}} = \frac{A_{E}}{A_{R} + A_{E}} .
 ```
 
-The area score is then given by,
+The area score  $`S_a`$ is then given by,
 
 ```math
-a = 1 - | \bar{A_{R}} - \bar{A_{E}} | .
+S_a = 1 - | \bar{A_{R}} - \bar{A_{E}} | .
 ```
 
-This score results in a value in [0,1]. Good estimations are expected to have a high area score. 
+This score results in a value in [0,1]. Good estimations are expected to have high area scores. 
 
 
 ### Final score
 
-The final score is a combination of the three measures explained above. 
+Consists of a combination of the three measures explained above. 
 
 The shape and texture scores are computed as follows, 
 
@@ -96,7 +96,14 @@ S_s = \frac{1}{2} [ \Phi_{k_1}(d_{ER}^{shape}(Y',Y)) h_{ER} + \Phi_{k_2}(d_{RE}^
 S_t = \frac{1}{2} [ \Phi_{k_3}(d_{ER}^{texture}(Y',Y)) h_{ER} + \Phi_{k_4}(d_{RE}^{texture}(Y,Y')) h_{RE} ] ,
 ```
 
-where $`\Phi_{k_i}(d) = e^{-k_id^2}`$ maps a distance $`d`$ to a score in [0,1]. 
+where $`\Phi_{k_i}(d) = e^{-k_id^2}`$ maps a distance $`d`$ to a score in [0,1]. The parameters $`k_i`$ are chosen
+according to some conducted baselines.
+
+The final score is finally given by,
+
+```math
+S = \frac{1}{2} S_a(S_s + S_t) .
+```
 
 ## Challenge-specific criteria
 
