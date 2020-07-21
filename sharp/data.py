@@ -71,12 +71,13 @@ def save_mesh(path, mesh):
 
 
 class Mesh:
+
     def __init__(self, path=None,
                  vertices=None, vertex_normals=None, vertex_colors=None,
                  faces=None, face_normals=None, faces_normal_indices=None,
                  normals=None,
                  texcoords=None, texture_indices=None, texture=None,
-                 material=None):
+                 material=None, mask_faces=None):
         self.path = path
         self.vertices = vertices
         self.vertex_normals = vertex_normals
@@ -89,6 +90,7 @@ class Mesh:
         self.texture_indices = texture_indices
         self.texture = texture
         self.material = material
+        self.mask_faces = mask_faces
 
     @staticmethod
     def load(path):
@@ -385,5 +387,6 @@ def save_npz(path, mesh):
         texture=((255 * mesh.texture).astype("uint8")
                  if mesh.texture is not None
                  else None),
+        mask_faces=astype_or_none(mesh.mask_faces, "uint32"),
         vertex_colors=astype_or_none(mesh.vertex_colors, "float32"),
     )
