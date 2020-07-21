@@ -37,11 +37,11 @@ operates on the 3D positions directly and computes a point-to-triangle distance 
 and its nearest triangle on the target surface $`B`$.
 For the texture error, the distance,
 ```math
-d(a, B)  = d_{texture}(a, B) ,
+d(a, B)  = d_{tex}(a, B) ,
 ```
 operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance. 
 
-This results in two shape distance values ($`d_{ER}^{shape}`$, $`d_{RE}^{shape}`$) and two texture distance values ($`d_{ER}^{texture}`$, $`d_{RE}^{texture}`$).
+This results in two shape distance values ($`d_{ER}^{shape}`$, $`d_{RE}^{shape}`$) and two texture distance values ($`d_{ER}^{tex}`$, $`d_{RE}^{tex}`$).
 Good estimations are expected to have low shape and texture distance values. 
 
 ### 2. Surface hit-rates
@@ -93,7 +93,7 @@ The shape and texture scores are computed as follows,
 
 ```math
 S_s = \frac{1}{2} [ \Phi_{k_1}(d_{ER}^{shape}(Y',Y)) h_{ER} + \Phi_{k_2}(d_{RE}^{shape}(Y,Y')) h_{RE} ] , \\
-S_t = \frac{1}{2} [ \Phi_{k_3}(d_{ER}^{texture}(Y',Y)) h_{ER} + \Phi_{k_4}(d_{RE}^{texture}(Y,Y')) h_{RE} ] ,
+S_t = \frac{1}{2} [ \Phi_{k_3}(d_{ER}^{tex}(Y',Y)) h_{ER} + \Phi_{k_4}(d_{RE}^{tex}(Y,Y')) h_{RE} ] ,
 ```
 
 where $`\Phi_{k_i}(d) = e^{-k_id^2}`$ maps a distance $`d`$ to a score in [0,1]. The parameters $`k_i`$ are chosen
