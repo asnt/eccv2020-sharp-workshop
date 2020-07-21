@@ -10,7 +10,7 @@ Notation:
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, $`Y`$, using three criterions:
 
-### Surface-to-surface distances 
+### 1. Surface-to-surface distances 
 
 Consist of two directed distances:
 
@@ -41,7 +41,7 @@ d(a, B)  = d_{texture}(a, B) ,
 ```
 operates on the interpolated texture values at the source and target 3D positions used to compute the shape distance.
 
-### Surface hit-rates
+### 2. Surface hit-rates
 
 Consist of two rates that are computed in two directions:
 
@@ -62,7 +62,7 @@ h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}} .
 In the two directions, the hit-rate is a score with a value in [0,1].
 
 
-### Surface area score
+### 3. Surface area score
 
 Consists of a score that quantifies the similarity between
 the surface area of the estimation and that of the reference. The surface area of the estimated mesh and the reference mesh 
