@@ -11,6 +11,8 @@
 
 ### Changed
 
+- Clarify the final evaluation metric in the documentation.
+- Clarify the CLI in the documentation.
 - Require numpy>=1.17.0 for the updated pseudo-random number generation API.
 
 ### Fixed
