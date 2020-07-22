@@ -8,6 +8,7 @@ try:
 except ImportError:
     from scipy.spatial import KDTree
 
+from . import data
 from .trirender import UVTrianglesRenderer
 
 
@@ -21,62 +22,65 @@ def slice_by_plane(mesh, center, n):
 
 
 def remove_points(mesh, indices, blackoutTexture=True):
-    cpy = copy.deepcopy(mesh)
-    cpy.vertices = np.delete(mesh.vertices, indices, axis=0)
+    submesh = data.Mesh()
+
+    roi_vertices = np.ones(len(mesh.vertices), dtype=bool)
+    roi_vertices[indices] = False
+    submesh.vertices = mesh.vertices[roi_vertices]
     if mesh.vertex_colors is not None:
-        cpy.vertex_colors = np.delete(mesh.vertex_colors, indices, axis=0)
+        submesh.vertex_colors = mesh.vertex_colors[roi_vertices]
     if mesh.vertex_normals is not None:
-        cpy.vertex_normals = np.delete(
-            mesh.vertex_normals, indices, axis=0)
+        submesh.vertex_normals = mesh.vertex_normals[roi_vertices]
 
     if mesh.faces is not None:
-        face_indices = np.where(
-            np.any(np.isin(mesh.faces[:], indices, assume_unique=False),
-                   axis=1)
-        )[0]
-        cpy.faces = np.delete(mesh.faces, face_indices, axis=0)
-        fix_indices = np.vectorize(
-            lambda x: np.sum(x >= indices))(cpy.faces)
-        cpy.faces -= fix_indices
+        removed_faces = np.any(np.isin(mesh.faces, indices), axis=1)
+        roi_faces = ~removed_faces
+        faces_subset = mesh.faces[roi_faces]
 
-        if mesh.face_normals is not None:
-            cpy.face_normals = np.delete(
-                mesh.face_normals, face_indices, axis=0)
-        unused_uv = None
+        idx_map = -np.ones(len(mesh.vertices), dtype=int)
+        idx_map[roi_vertices] = np.arange(sum(roi_vertices))
+        faces_subset = idx_map[faces_subset]
+        submesh.faces = faces_subset
+
         if mesh.texture_indices is not None:
-            cpy.texture_indices = np.delete(
-                mesh.texture_indices, face_indices, axis=0)
-            used_uv = np.unique(cpy.texture_indices.flatten())
-            all_uv = np.arange(len(mesh.texcoords))
-            unused_uv = np.setdiff1d(all_uv, used_uv, assume_unique=True)
-            fix_uv_idx = np.vectorize(
-                lambda x: np.sum(x >= unused_uv))(cpy.texture_indices)
-            cpy.texture_indices -= fix_uv_idx
-            cpy.texcoords = np.delete(mesh.texcoords, unused_uv, axis=0)
+            texture_faces_subset = mesh.texture_indices[roi_faces]
 
-            # render texture
+            roi_texcoords = np.zeros(len(mesh.texcoords), dtype=bool)
+            kept_texcoords_indices = np.unique(texture_faces_subset)
+            roi_texcoords[kept_texcoords_indices] = True
+
+            idx_map = -np.ones(len(mesh.texcoords), dtype=int)
+            idx_map[roi_texcoords] = np.arange(sum(roi_texcoords))
+            texture_faces_subset = idx_map[texture_faces_subset]
+
+            submesh.texture_indices = texture_faces_subset
+            submesh.texcoords = mesh.texcoords[roi_texcoords]
+
             if blackoutTexture:
-                tri_indices = cpy.texture_indices
-                tex_coords = cpy.texcoords
+                tri_indices = submesh.texture_indices
+                tex_coords = submesh.texcoords
                 img = render_texture(mesh.texture, tex_coords, tri_indices)
                 # dilate the result to remove sewing
                 kernel = np.ones((3, 3), np.uint8)
                 texture_f32 = cv2.dilate(img, kernel, iterations=1)
-                cpy.texture = texture_f32.astype(np.float64)
+                submesh.texture = texture_f32.astype(np.float64)
 
-        if mesh.faces_normal_indices is not None:
-            cpy.faces_normal_indices = np.delete(
-                mesh.faces_normal_indices, face_indices, axis=0)
-            used_ni = np.unique(cpy.faces_normal_indices.flatten())
-            all_ni = np.arange(len(mesh.face_normals))
-            unused_ni = np.setdiff1d(all_ni, used_ni, assume_unique=True)
-            fix_ni_idx = np.vectorize(lambda x: np.sum(
-                x > unused_ni))(cpy.faces_normal_indices)
-            cpy.faces_normal_indices -= fix_ni_idx
-            cpy.face_normals = np.delete(
-                mesh.face_normals, unused_ni, axis=0)
+        if (mesh.faces_normal_indices is not None
+                and mesh.face_normals is not None):
+            normals_faces_subset = mesh.faces_normal_indices[roi_faces]
 
-    return cpy
+            roi_normals = np.zeros(len(mesh.face_normals), dtype=bool)
+            kept_normals_indices = np.unique(normals_faces_subset)
+            roi_normals[kept_normals_indices] = True
+
+            idx_map = -np.ones(len(mesh.face_normals), dtype=int)
+            idx_map[roi_normals] = np.arange(sum(roi_normals))
+            normals_faces_subset = idx_map[normals_faces_subset]
+
+            submesh.faces_normal_indices = normals_faces_subset
+            submesh.face_normals = mesh.face_normals[roi_normals]
+
+    return submesh
 
 
 def render_texture(texture, tex_coords, tri_indices):
