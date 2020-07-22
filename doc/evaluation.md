@@ -4,8 +4,8 @@
 
 Notation:
 
-- $`Y`$: the ground truth complete shape,
-- $`Y'`$: the estimated complete shape.
+- $`Y`$: the ground truth complete reference mesh,
+- $`Y'`$: the estimated complete mesh.
 
 The quality of the estimation, $`Y'`$, is evaluated quantitatively with respect
 to the ground truth, $`Y`$, using three criterions:
