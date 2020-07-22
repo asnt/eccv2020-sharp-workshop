@@ -52,7 +52,7 @@ Consist of two rates that are computed in two directions:
 2. $`h_{RE}`$ computed from reference to estimation. 
 
 The hit-rate $`h_{AB}`$ indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
-a correspondence on the target mesh $`B`$ with the point-to-triangle distance used above. 
+a correspondence on the target mesh $`B`$. A point in mesh $`A`$ has a correspondence (hit) in mesh  $`B`$ if its projection on the plane of the nearest triangle intersects the triangle.
 
 Let us consider:
 
@@ -117,9 +117,9 @@ S = \frac{1}{2} S_a(S_s + S_t) .
 
 ## References
 
-- Jensen, Rasmus, et al.
+[1] Jensen, Rasmus, et al.
   "Large scale multi-view stereopsis evaluation."
   Proceedings of the IEEE Conference on Computer Vision and Pattern
   Recognition.
   2014.
-- David Stutz, https://github.com/davidstutz/mesh-evaluation
+
