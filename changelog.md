@@ -1,5 +1,29 @@
 # Changlog
 
+## [1.4.0] - 2020-07-22
+
+### Added
+
+- Support masks (i.e. ROI's) in the shooting method for generating partial
+  data.
+- Routine to generate partial data on a directory tree.
+- Make generation of partial data repeatble (with the `--seed` CLI option).
+
+### Changed
+
+- Require numpy>=1.17.0 for the updated pseudo-random number generation API.
+
+### Fixed
+
+- Fixed memory leak in the shooting method for generating partial data that
+  made repeated calls to `sharp.utils.shoot_holes()` crash after some time.
+- Prevent black seams in the texture when generating partial data.
+
+### Removed
+
+- Drop the 'cut' method for generating partial data.
+
+
 ## [1.3.0] - 2020-07-13
 
 ### Changed
