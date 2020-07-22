@@ -64,8 +64,11 @@ $ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --m
 ```
 
 --mask-dir: (optional) Directory tree with the masks (.npy). If defined, the partial data is created only on the non-masked faces of the meshes (only challenge 1). 
+
 --seed: Initial state for the pseudo random number generator. If not set, the initial state is not set explicitly. 
+
 --n-workers: Number of parallel processes. By default, the number of available processors.
+
 -n: (or --n-shapes) Number of partial shapes to generate per mesh. Default is 1. 
 
 
