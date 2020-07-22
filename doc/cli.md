@@ -12,6 +12,7 @@ Display help on a specific command, e.g. `convert`:
 $ python -m sharp convert -h
 ```
 
+
 ## Convert between mesh formats
 
 Supported formats: `.obj`, `.npz`.
@@ -26,6 +27,7 @@ $ python -m sharp convert path/to/input.npz path/to/output.obj
 
 Supported formats: `.obj`, `.npz`. 
 
+
 ### Holes shooting on a single mesh
 
 Usage example: 
@@ -34,45 +36,30 @@ Usage example:
 # Shoot 40 holes with each hole removing 2% of the points of the mesh.
 $ python -m sharp shoot path/to/input.[npz/obj] path/to/output.[npz/obj] --holes 40 --dropout 0.02 --mask path/to/mask.npy
 ```
-or 
-```bash
-# # Shoot 30 to 50 holes (selected randomly) with each hole removing from 1% to 3% (selected randomly) of the points of the mesh.
-$ python -m sharp shoot path/to/input.[npz/obj] path/to/output.[npz/obj] --min-holes 30 --max-holes 50  --min-dropout 0.01 --max-dropout 0.03 --mask path/to/mask.npy
-```
 
 --mask: (optional) path to the mask (.npy) to generate holes only on regions considered for evaluation (only challenge 1). 
 As mentioned in the [evaluation doc](https://gitlab.uni.lu/asaint/eccv2020-sharp-workshop/-/blob/update-instructions/doc/evaluation.md#challenge-specific-criteria), 
 challenge 1 is evaluated on specific regions of the body mesh:
 
-- Track 1: head and hands are ignored, rest of the body is considered 
+- Track 1: head and hands are ignored, rest of the body is considered
 - Track 2: hands, ears, and feet are considered, rest of the body is ignored
 
-A mask is defined per face as boolean information: 0 if the face is to be ignored, and 1 if the face is to be kept. 
+A mask is defined per face as boolean information: 0 if the face is to be ignored, and 1 if the face is to be kept.
 
-PS: Participants are invited to generate their own masks if they would like to use them in partial data generation. 
 
 ### Holes shooting on a directory tree of meshes
 
-Usage examples: 
+Usage examples:
 
 ```bash
 # Shoot 40 holes with each hole removing 2% of the points of the mesh.
-$ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --holes 40 --dropout 0.02 --mask-dir path/to/mask_directory --seed [seed_value] --n-workers [nb_workers] -n [nb_shapes]
-```
-or
-```bash
-# Shoot 30 to 50 holes (selected randomly) with each hole removing from 1% to 3% (selected randomly) of the points of the mesh.
-$ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --min-holes 30 --max-holes 50  --min-dropout 0.01 --max-dropout 0.03 --mask-dir path/to/mask_directory --seed [seed_value] --n-workers [nb_workers] -n [nb_shapes]
+$ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --holes 40 --dropout 0.02 --mask-dir path/to/mask_directory [--seed seed_value] [--n-workers n_workers] [--n-shapes n_shapes]
 ```
 
---mask-dir: (optional) Directory tree with the masks (.npy). If defined, the partial data is created only on the non-masked faces of the meshes (only challenge 1). 
+--mask-dir: (optional) Directory tree with the masks (.npy). If defined, the partial data is created only on the non-masked faces of the meshes (only challenge 1).
 
---seed: Initial state for the pseudo random number generator. If not set, the initial state is not set explicitly. 
+--seed: Initial state for the pseudo random number generator. If not set, the initial state is not set explicitly.
 
 --n-workers: Number of parallel processes. By default, the number of available processors.
 
--n: (or --n-shapes) Number of partial shapes to generate per mesh. Default is 1. 
-
-
-
-
+-n: (or --n-shapes) Number of partial shapes to generate per mesh. Default is 1.
