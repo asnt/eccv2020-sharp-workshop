@@ -53,6 +53,5 @@ surface-to-surface distance between `Y` and `Y'`.
 - [Evaluation and metrics](doc/evaluation.md)
 - [Datasets](doc/datasets.md)
 - [Dataset splits](doc/dataset_splits.md)
-- [Generation of partial data](doc/partial_data.md)
 - [Data formats](doc/formats.md)
 - [Command line interface (CLI)](doc/cli.md)
