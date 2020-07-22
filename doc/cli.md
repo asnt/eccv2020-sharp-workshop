@@ -25,20 +25,20 @@ $ python -m sharp convert path/to/input.npz path/to/output.obj
 
 ## Generate partial data
 
-Supported formats: `.obj`, `.npz`. 
+Supported formats: `.obj`, `.npz`.
 
 
 ### Holes shooting on a single mesh
 
-Usage example: 
+Usage example:
 
 ```bash
 # Shoot 40 holes with each hole removing 2% of the points of the mesh.
 $ python -m sharp shoot path/to/input.(npz|obj) path/to/output.(npz|obj) --holes 40 --dropout 0.02 [--mask path/to/mask.npy]
 ```
 
---mask: (optional) path to the mask (.npy) to generate holes only on regions considered for evaluation (only challenge 1). 
-As mentioned in the [evaluation doc](https://gitlab.uni.lu/asaint/eccv2020-sharp-workshop/-/blob/update-instructions/doc/evaluation.md#challenge-specific-criteria), 
+--mask: (optional) path to the mask (.npy) to generate holes only on regions considered for evaluation (only challenge 1).
+As mentioned in the [evaluation doc](https://gitlab.uni.lu/asaint/eccv2020-sharp-workshop/-/blob/update-instructions/doc/evaluation.md#challenge-specific-criteria),
 challenge 1 is evaluated on specific regions of the body mesh:
 
 - Track 1: head and hands are ignored, rest of the body is considered
