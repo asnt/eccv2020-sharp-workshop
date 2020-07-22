@@ -21,10 +21,24 @@ def _do_convert(args):
 
 def _do_shoot(args):
     mesh = data.load_mesh(str(args.input))
-    n_holes = (args.holes if args.holes is not None
-               else (args.min_holes, args.max_holes))
-    dropout = (args.dropout if args.dropout is not None
-               else (args.min_dropout, args.max_dropout))
+
+    has_min_holes = args.min_holes is not None
+    has_max_holes = args.max_holes is not None
+    if has_min_holes != has_max_holes:
+        raise ValueError("--min-holes and --max-holes must be set together")
+    n_holes = ((args.min_holes, args.max_holes)
+               if has_min_holes
+               else args.holes)
+
+    has_min_dropout = args.min_dropout is not None
+    has_max_dropout = args.max_dropout is not None
+    if has_min_dropout != has_max_dropout:
+        raise ValueError(
+            "--min-dropout and --max-dropout must be set together")
+    dropout = ((args.min_dropout, args.max_dropout)
+               if has_min_dropout
+               else args.dropout)
+
     mask_faces = (np.load(args.mask) if args.mask is not None
                   else None)
     faces = None if mask_faces is None else mesh.faces
@@ -210,33 +224,34 @@ def _parse_args():
     parser_shoot.add_argument("input", type=pathlib.Path)
     parser_shoot.add_argument("output", type=pathlib.Path)
     parser_shoot.add_argument(
-        "--holes", type=int, default=None,
-        help="If not None, fixed number of holes to shoot, otherwise a random"
-             " number between min_holes and max_holes is used.",
+        "--holes", type=int, default=40,
+        help="Number of holes to shoot.",
     )
     parser_shoot.add_argument(
-        "--min-holes", type=int, default=3,
-        help="Minimum number of holes to generate (default: 3).",
+        "--min-holes", type=int, default=None,
+        help="Minimum number of holes to generate."
+             " (Supersedes --holes and requires --max-holes.)",
     )
     parser_shoot.add_argument(
-        "--max-holes", type=int, default=10,
-        help="Maximum number of holes to generate (default: 10).",
+        "--max-holes", type=int, default=None,
+        help="Maximum number of holes to generate."
+             " (Supersedes --holes and requires --min-holes.)",
     )
     parser_shoot.add_argument(
-        "--dropout", type=float, default=None,
-        help="If not None, fixed proportion of points to remove in a single"
-             " hole, otherwise a random proportion between min_dropout and"
-             " max_dropout is used.",
+        "--dropout", type=float, default=2e-2,
+        help="Proportion of points of the mesh to remove in a single hole.",
     )
     parser_shoot.add_argument(
-        "--min-dropout", type=float, default=0.01,
-        help="Minimum proportion of points to remove in a single hole"
-             " (default: 0.01).",
+        "--min-dropout", type=float, default=None,
+        help="Minimum proportion of points of the mesh to remove in a single "
+             "hole."
+             " (Supersedes --dropout and requires --max-dropout.)",
     )
     parser_shoot.add_argument(
-        "--max-dropout", type=float, default=0.05,
-        help="Maximum proportion of points to remove in a single hole"
-             " (default: 0.05).",
+        "--max-dropout", type=float, default=None,
+        help="Maximum proportion of points of the mesh to remove in a single "
+             "hole."
+             " (Supersedes --dropout and requires --min-dropout.)",
     )
     parser_shoot.add_argument(
         "--mask", type=pathlib.Path,
