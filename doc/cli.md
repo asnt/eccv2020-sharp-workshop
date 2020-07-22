@@ -47,7 +47,9 @@ challenge 1 is evaluated on specific regions of the body mesh:
 - Track 1: head and hands are ignored, rest of the body is considered 
 - Track 2: hands, ears, and feet are considered, rest of the body is ignored
 
-It is defined per face as boolean information: 0 if the face is to be ignored, and 1 if the face is to be kept.
+A mask is defined per face as boolean information: 0 if the face is to be ignored, and 1 if the face is to be kept. 
+
+PS: Participants are invited to generate their own masks if they would like to use them in partial data generation. 
 
 ### Holes shooting on a directory tree of meshes
 
