@@ -17,9 +17,10 @@ Consist of two directed distances:
 1. $`d_{ER}`$ is computed from the estimation to the reference
 2. $`d_{RE}`$ is computed from the reference to the estimation. 
 
+These distances are inspired from [1] but have been adpated to fit the problem at hand. 
 The directed distance $`d_{AB}`$ between meshes $`A`$ and $`B`$ is
 approximated in practice by sampling points on $`A`$ and computing their 
-distances to the nearest triangles in mesh $`B`$. 
+distances to the nearest triangles in mesh $`B`$.
 
 The directed distances $`d_{RE}`$ and $`d_{ER}`$ are given by, 
 ```math
@@ -45,21 +46,22 @@ This results in two shape distance values ($`d_{ER}^{shape}`$, $`d_{RE}^{shape}`
 Good estimations are expected to have low shape and texture distance values. 
 
 ### 2. Surface hit-rates
-
+ith the point-to-triangle distance used above.
 Consist of two rates that are computed in two directions:
 
 1. $`h_{ER}`$ computed from estimation to reference
 2. $`h_{RE}`$ computed from reference to estimation. 
 
 The hit-rate $`h_{AB}`$ indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
-a correspondence on the target mesh $`B`$. A point in mesh $`A`$ has a correspondence (hit) in mesh  $`B`$ if its projection on the plane of the nearest triangle intersects the triangle.
+a correspondence on the target mesh $`B`$. A point in mesh $`A`$ has a correspondence (hit) in mesh  $`B`$ if 
+its projection on the plane of the nearest triangle in $`B`$ intersects the triangle.
 
 Let us consider:
 
 - $`H_{AB}`$: number of points of the source mesh $`A`$ that hit the target $`B`$ 
 - $`M_{AB}`$: number of points of the source mesh $`A`$ that miss the target $`B`$.
 
-The hit-rate from $`A`$ to $`B`$ is then given by,
+The hit-rate from $`A`$ to $`B`ith the point-to-triangle distance used above.$ is then given by,
 ```math
 h_{AB} = \frac{H_{AB}}{H_{AB} + M_{AB}} .
 ```
@@ -122,4 +124,5 @@ S = \frac{1}{2} S_a(S_s + S_t) .
   Proceedings of the IEEE Conference on Computer Vision and Pattern
   Recognition.
   2014.
+
 
