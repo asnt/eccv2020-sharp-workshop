@@ -53,7 +53,7 @@ Usage examples:
 
 ```bash
 # Shoot 40 holes with each hole removing 2% of the points of the mesh.
-$ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --holes 40 --dropout 0.02 --mask-dir path/to/mask_directory [--seed seed_value] [--n-workers n_workers] [--n-shapes n_shapes]
+$ python -m sharp shoot_dir path/to/input_directory path/to/output_directory --holes 40 --dropout 0.02 [--mask-dir path/to/mask_directory] [--seed seed_value] [--n-workers n_workers] [--n-shapes n_shapes]
 ```
 
 --mask-dir: (optional) Directory tree with the masks (.npy). If defined, the partial data is created only on the non-masked faces of the meshes (only challenge 1).
