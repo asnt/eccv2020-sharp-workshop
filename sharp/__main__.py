@@ -195,14 +195,18 @@ def _parse_args():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers()
 
-    parser_convert = subparsers.add_parser("convert",
-                                           help="convert between mesh formats")
+    parser_convert = subparsers.add_parser(
+        "convert",
+        help="Convert between mesh formats.",
+    )
     parser_convert.add_argument("input", type=pathlib.Path)
     parser_convert.add_argument("output", type=pathlib.Path)
     parser_convert.set_defaults(func=_do_convert)
 
     parser_shoot = subparsers.add_parser(
-        "shoot", help="generate partial data with the shooting method")
+        "shoot",
+        help="Generate partial data with the shooting method.",
+    )
     parser_shoot.add_argument("input", type=pathlib.Path)
     parser_shoot.add_argument("output", type=pathlib.Path)
     parser_shoot.add_argument(
@@ -226,18 +230,18 @@ def _parse_args():
     )
     parser_shoot.add_argument(
         "--min-dropout", type=float, default=0.01,
-        help="minimum proportion of points to remove in a single hole"
-             " (default: 0.01)",
+        help="Minimum proportion of points to remove in a single hole"
+             " (default: 0.01).",
     )
     parser_shoot.add_argument(
         "--max-dropout", type=float, default=0.05,
-        help="maximum proportion of points to remove in a single hole"
-             " (default: 0.05)",
+        help="Maximum proportion of points to remove in a single hole"
+             " (default: 0.05).",
     )
     parser_shoot.add_argument(
         "--mask", type=pathlib.Path,
-        help=" (optional) path to the mask (.npy) to generate holes only on"
-             " regions considered for evaluation",
+        help=" (optional) Path to the mask (.npy) to generate holes only on"
+             " regions considered for evaluation.",
     )
     parser_shoot.set_defaults(func=_do_shoot)
 
