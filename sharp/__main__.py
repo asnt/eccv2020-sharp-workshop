@@ -295,7 +295,7 @@ def _parse_args():
 
     args = parser.parse_args()
 
-    # Ensure help message is displayed when not command is provided.
+    # Ensure the help message is displayed when no command is provided.
     if "func" not in args:
         parser.print_help()
         sys.exit(1)
