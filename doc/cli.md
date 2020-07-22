@@ -34,7 +34,7 @@ Usage example:
 
 ```bash
 # Shoot 40 holes with each hole removing 2% of the points of the mesh.
-$ python -m sharp shoot path/to/input.[npz/obj] path/to/output.[npz/obj] --holes 40 --dropout 0.02 --mask path/to/mask.npy
+$ python -m sharp shoot path/to/input.(npz|obj) path/to/output.(npz|obj) --holes 40 --dropout 0.02 [--mask path/to/mask.npy]
 ```
 
 --mask: (optional) path to the mask (.npy) to generate holes only on regions considered for evaluation (only challenge 1). 
