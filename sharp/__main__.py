@@ -253,7 +253,7 @@ def _parse_args():
         type=pathlib.Path,
         help=" (optional) Directory tree with the masks (.npy). If defined,"
              " the partial data is created only on the non-masked faces of the"
-             " meshes.",
+             " meshes. (Only valid for challenge 1.)",
     )
     parser_shoot_dir.add_argument(
         "--holes",
