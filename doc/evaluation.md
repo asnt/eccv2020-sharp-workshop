@@ -105,7 +105,7 @@ The final score is finally given by,
 S = \frac{1}{2} S_a(S_s + S_t) .
 ```
 
-## Challenge-specific criteria
+### Challenge-specific criteria
 
 | challenge(/track) | shape | texture | note                      |
 | -                 | -     | -       | -                         |
