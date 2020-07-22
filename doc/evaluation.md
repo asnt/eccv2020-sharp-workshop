@@ -52,7 +52,8 @@ Consist of two rates that are computed in two directions:
 2. $`h_{RE}`$ computed from reference to estimation. 
 
 The hit-rate $`h_{AB}`$ indicates the amount of points sampled on the surface of a source mesh $`A`$ that have
-a correspondence along the normal direction in a target mesh $`B`$ (i.e. the normals at these points intersect the nearest triangles in mesh $`B`$). 
+a correspondence on the target mesh $`B`$ with the point-to-triangle distance used above. 
+
 Let us consider:
 
 - $`H_{AB}`$: number of points of the source mesh $`A`$ that hit the target $`B`$ 
