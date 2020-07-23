@@ -42,12 +42,18 @@ def _do_shoot(args):
     mask_faces = (np.load(args.mask) if args.mask is not None
                   else None)
     faces = None if mask_faces is None else mesh.faces
+
+    logger.info(f"setting random seed {args.seed}")
+    rng = np.random.default_rng(args.seed)
+
     point_indices = utils.shoot_holes(mesh.vertices,
                                       n_holes,
                                       dropout,
                                       mask_faces=mask_faces,
-                                      faces=faces)
+                                      faces=faces,
+                                      rng=rng)
     shot = utils.remove_points(mesh, point_indices)
+
     shot.save(str(args.output))
 
 
@@ -252,6 +258,13 @@ def _parse_args():
         help="Maximum proportion of points of the mesh to remove in a single "
              "hole."
              " (Supersedes --dropout and requires --min-dropout.)",
+    )
+    parser_shoot.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Initial state for the pseudo random number generator."
+             " If not set, the initial state is not set explicitly.",
     )
     parser_shoot.add_argument(
         "--mask", type=pathlib.Path,
