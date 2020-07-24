@@ -1,5 +1,17 @@
 # Changlog
 
+## [1.4.1] - 2020-07-24
+
+### Added
+
+- Add an optional `--seed` argument to `python -m sharp shoot` for
+  repeatability.
+
+### Changed
+
+- Make `python -m sharp shoot` faster, especially for larger meshes.
+
+
 ## [1.4.0] - 2020-07-22
 
 ### Added
