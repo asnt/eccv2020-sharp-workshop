@@ -18,7 +18,7 @@ $ python -m sharp convert -h
 Supported formats: `.obj`, `.npz`.
 
 ```bash
-$ python -m sharp convert shoot path/to/input.obj path/to/output.npz
+$ python -m sharp convert path/to/input.obj path/to/output.npz
 $ python -m sharp convert path/to/input.npz path/to/output.obj
 ```
 
